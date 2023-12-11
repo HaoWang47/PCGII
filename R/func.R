@@ -116,7 +116,7 @@ makeBlockDiag=function(blocksize=4, p=20, min.beta=0.3, max.beta=0.9){ # blocksi
   as.matrix(bdiag(S))
 }
 
-double_prior=function(prior){
+undirected_prior=function(prior){
   ## An utility function to pre-process the input prior set. This function will ensure the input prior set corresponds to an undirected prior network. If the prior network is believed to be directed, no pre-processing of the prior set is needed.
 
   ## Input:
@@ -332,8 +332,8 @@ inference=function(list, alpha=0.05){
 }
 
 
-unique_cord=function(cord){
-  cord %>% as.data.frame %>% transform(row = pmin(row, col), col = pmax(row, col)) %>%
-    arrange(row, col) %>%
-    unique()
-}
+# unique_cord=function(cord){
+#   cord %>% as.data.frame %>% transform(row = pmin(row, col), col = pmax(row, col)) %>%
+#     arrange(row, col) %>%
+#     unique()
+# }
