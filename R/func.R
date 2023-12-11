@@ -116,16 +116,17 @@ makeBlockDiag=function(blocksize=4, p=20, min.beta=0.3, max.beta=0.9){ # blocksi
   as.matrix(bdiag(S))
 }
 
+
+## An utility function to pre-process the input prior set. This function will ensure the input prior set corresponds to an undirected prior network. If the prior network is believed to be directed, no pre-processing of the prior set is needed.
+
+## Input:
+#   - prior: the prior set, a k by 2 matrix, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief.
+
+## Output: This function returns
+##  - a pre-processed prior set, in which the connection between any pair of nodes is undirected.
+
+## Remark: this function is not necessary. Prior set should be considered carefully before running the network analysis. If the prior network connections are believed to be undirected while the prior set only includes one way connections for simplicity, this function will duplicate the connections and swap the direction automactically.
 undirected_prior = function(prior){
-  ## An utility function to pre-process the input prior set. This function will ensure the input prior set corresponds to an undirected prior network. If the prior network is believed to be directed, no pre-processing of the prior set is needed.
-
-  ## Input:
-  #   - prior: the prior set, a k by 2 matrix, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief.
-
-  ## Output: This function returns
-  ##  - a pre-processed prior set, in which the connection between any pair of nodes is undirected.
-
-  ## Remark: this function is not necessary. Prior set should be considered carefully before running the network analysis. If the prior network connections are believed to be undirected while the prior set only includes one way connections for simplicity, this function will duplicate the connections and swap the direction automactically.
   rbind.data.frame(prior, prior %>% transform(row = pmax(row, col), col = pmin(row, col))) %>%
     arrange(row, col) %>% unique()
 }
