@@ -116,7 +116,7 @@ makeBlockDiag=function(blocksize=4, p=20, min.beta=0.3, max.beta=0.9){ # blocksi
   as.matrix(bdiag(S))
 }
 
-undirected_prior=function(prior){
+undirected_prior = function(prior){
   ## An utility function to pre-process the input prior set. This function will ensure the input prior set corresponds to an undirected prior network. If the prior network is believed to be directed, no pre-processing of the prior set is needed.
 
   ## Input:
