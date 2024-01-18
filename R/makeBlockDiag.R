@@ -1,5 +1,6 @@
 #' A utility function generates block-diagonal matrix of size p by p with blocks B1, B2, ..., Bk. Each block matrix is of size blocksize by blocksize. The off-diagonal elements in block matrix are generated from uniform (min.beta, max.beta). The diagonal elements in block matrix are generated from uniform (1, 1.25).
 #'
+#' @export makeBlockDiag
 #' @param blocksize A positive integer, the dimension of the block matrix. Note, 'blocksize' has to be a factor of 'p'.
 #' @param p A positive integer, the size of the block-diagonal matrix.
 #' @param min.beta A positive number, lower limits of the uniform distribution.

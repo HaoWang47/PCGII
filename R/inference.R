@@ -1,5 +1,6 @@
 #' Inference() is the function to conduct simultaneous inference of estimated partial correlations.
 #'
+#' @export inference
 #' @param list A list returned by either `PCGII()` or `clevel()`.
 #' @param alpha A pre-determined False Discovery Rate. Nominal FDR is set at 0.05 by default.
 #' @returns An adjacency matrix of significant partial correlations.
@@ -26,7 +27,7 @@
 #' colnames(prior_set)=c("row", "col")
 #' prior_set=undirected_prior(prior_set)
 #' PCGII_out=PCGII(df=X, prior=prior_set, lambda = lam)
-#' inference_out=inference(list=PCGII_out1)
+#' inference_out=inference(list=PCGII_out)
 #' diag(inference_out)=0
 #' net=inference_out %>% graph_from_adjacency_matrix(mode = "undirected")
 #' net %>% plot(vertex.size=4, vertex.label.dist=0.5, vertex.color="red", edge.arrow.size=0.5, layout=layout_in_circle(net))

@@ -21,6 +21,7 @@ clevel() is the function to apply the method originally proposed in paper '> Qiu
 library(igraph)
 library(tidyverse)
 library(PCGII)
+library(mvtnorm)
 # Simulating data
 set.seed(1234567)
 n=50 # sample size
@@ -35,7 +36,7 @@ X = rmvnorm(n = n, sigma = Sigma)
 
 lam=2*sqrt(log(p)/n) ## fixed lambda
 
-CLEVEL_out=clevel(df=X, prior=prior_set, lambda = lam)
+CLEVEL_out=clevel(df=X, lambda = lam)
 inference_out=inference(list=PCGII_out1)
 diag(inference_out)=0
 net=inference_out \%>\% graph_from_adjacency_matrix(mode = "undirected")

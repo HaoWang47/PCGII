@@ -1,5 +1,6 @@
 #' A utility function takes PCGII inference results as input and generates an adjacecy matrix corresponding to the significant partial correlations
 #'
+#' @export sigs2mat
 #' @param sigs A dataframe of locations (row, col) of selected edges.
 #' @param P A number, the number of nodes in the network.
 #' @returns A matrix of size P*(P-1)/2, with 0, 1.

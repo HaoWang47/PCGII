@@ -1,5 +1,6 @@
 #' PCGII() is the function to apply the proposed method to get the estimated partial correlation graph with information incorporation
 #'
+#' @export PCGII
 #' @param df The main expression dataset, an n by p matrix, in which each row corresponds to a sample and each column represents expression/abundance of an omics feature.
 #' @param prior The prior set, a k by 2 dataframe, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief. Note, prior input has to be dataframe.
 #' @param lambda The regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of sqrt(2*log(p)/n).

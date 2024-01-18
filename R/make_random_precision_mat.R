@@ -1,5 +1,6 @@
 #' A utility function generates unstructured/random network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (−upper, −lower) ∪ (lower, upper)
 #'
+#' @export make_random_precision_mat
 #' @param eta A number between 0 and 1, the probability for drawing an edge between two arbitrary vertices, i.e. the sparsity of the network.
 #' @param p A positive integer, the number of vertices.
 #' @param lower A positive number, lower limits of the uniform distribution.

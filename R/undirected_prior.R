@@ -1,5 +1,6 @@
 #' An utility function to pre-process the input prior set. This function will ensure the input prior set corresponds to an undirected prior network. If the prior network is believed to be directed, no pre-processing of the prior set is needed.
 #'
+#' @export undirected_prior
 #' @param prior A k by 2 data.frame of prior set, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief
 #' @returns A 2-column data.frame of pre-processed prior set, in which the connection between any pair of nodes is undirected.
 #' @examples
