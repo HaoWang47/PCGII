@@ -8,6 +8,7 @@
 #' undirected=undirected_prior(prior)
 #' ## Remark: this function is not necessary. Prior set should be considered carefully before running the network analysis. If the prior network connections are believed to be undirected while the prior set only includes one way connections for simplicity, this function will duplicate the connections and swap the direction automactically.
 undirected_prior = function(prior){
+  require(tidyverse)
   rbind.data.frame(prior, prior %>% transform(row = pmax(row, col), col = pmin(row, col))) %>%
     arrange(row, col) %>% unique()
 }
