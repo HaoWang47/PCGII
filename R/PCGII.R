@@ -5,6 +5,9 @@
 #' @param lambda The regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of sqrt(2*log(p)/n).
 #' @returns A list. The list contains estimated partial correlation matrix (Est), sparse partial correlation estimation matrix with threshold (EstThresh), estimated kappa (kappa), estimated test statistics matrix of partial correlations (tscore), sample size (n) and number of nodes (p).
 #' @examples
+#' library(igraph)
+#' library(tidyverse)
+#' library(PCGII)
 #' # Simulating data
 #' set.seed(1234567)
 #' n=50 # sample size

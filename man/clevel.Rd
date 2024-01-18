@@ -18,6 +18,9 @@ A list. The list contains estimated partial correlation matrix (Est), sparse par
 clevel() is the function to apply the method originally proposed in paper '> Qiu, Y., & Zhou, X. H. (2020). Estimating c-level partial correlation graphs with application to brain imaging. It is used to get the estimated partial correlation graph without information incorporation.
 }
 \examples{
+library(igraph)
+library(tidyverse)
+library(PCGII)
 # Simulating data
 set.seed(1234567)
 n=50 # sample size

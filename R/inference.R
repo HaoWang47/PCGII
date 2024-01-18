@@ -4,6 +4,9 @@
 #' @param alpha A pre-determined False Discovery Rate. Nominal FDR is set at 0.05 by default.
 #' @returns An adjacency matrix of significant partial correlations.
 #' @examples
+#' library(igraph)
+#' library(tidyverse)
+#' library(PCGII)
 #' # Simulating data
 #' set.seed(1234567)
 #' n=50 # sample size

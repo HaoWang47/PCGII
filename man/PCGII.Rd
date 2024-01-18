@@ -20,6 +20,9 @@ A list. The list contains estimated partial correlation matrix (Est), sparse par
 PCGII() is the function to apply the proposed method to get the estimated partial correlation graph with information incorporation
 }
 \examples{
+library(igraph)
+library(tidyverse)
+library(PCGII)
 # Simulating data
 set.seed(1234567)
 n=50 # sample size
