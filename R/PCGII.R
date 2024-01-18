@@ -6,28 +6,11 @@
 #' @returns A list. The list contains estimated partial correlation matrix (Est), sparse partial correlation estimation matrix with threshold (EstThresh), estimated kappa (kappa), estimated test statistics matrix of partial correlations (tscore), sample size (n) and number of nodes (p).
 #' @examples
 #' # Simulating data
-#' library(igraph)
-#' library(tidyverse)
 #' set.seed(1234567)
 #' n=50 # sample size
 #' p=30 # number of nodes
 #'
-#' g=sample_pa(p, power=1, m=1, directed = FALSE) # undirected scale-free network with the power of the preferential attachment set as 1, the number of edges to add in each time step set as 2.
-#' plot(g, vertex.size=4, vertex.label.dist=0.5, vertex.color="red", edge.arrow.size=0.5) # visulize simulated network structure
-#' g %>% plot(vertex.size=4, vertex.label.dist=0.5, vertex.color="red", edge.arrow.size=0.5, layout=layout_in_circle(g))
-#' # compute precision matrix structure corresponding to the simulated scale-free networ
-#' omega=as_adjacency_matrix(g) %>% as.matrix()
-#' for(h1 in 1:(p-1)){
-#'   for(h2 in (h1+1):p){
-#'     if(omega[h1,h2]!=0){
-#'       temp=runif(1, 0.2, 0.5)*sample(c(-1,1),size=1) # randomly assign connection strength, i.e. partial correlations
-#'       omega[h1,h2]=temp
-#'       omega[h2,h1]=temp
-#'     }
-#'   }
-#' }
-#' diag(omega)=rowSums(abs(omega)) # make sure precision matrix is positive definite
-#' diag(omega)=diag(omega)+0.10
+#' omega=make_random_precision_mat(eta=.01, p=p)
 #'
 #' # population covariance matrix, which is used to generate data
 #' Sigma=solve(omega)
@@ -37,9 +20,14 @@
 #' lam=2*sqrt(log(p)/n) ## fixed lambda
 #'
 #' # directed prior network
-#' prior_set=matrix(data=c(9,15, 3,4, 5,24, 16,20, 25,22, 28,8, 11,4), nrow=7, ncol=2, byrow = TRUE)
+#' prior_set=as.data.frame(matrix(data=c(5,6, 28,24), nrow=2, ncol=2, byrow = TRUE))
 #' colnames(prior_set)=c("row", "col")
-#' PCGII_out=PCGII(df=X, prior=as.data.frame(prior_set), lambda = lam)
+#' prior_set=undirected_prior(prior_set)
+#' PCGII_out=PCGII(df=X, prior=prior_set, lambda = lam)
+#' inference_out=inference(list=PCGII_out1)
+#' diag(inference_out)=0
+#' net=inference_out %>% graph_from_adjacency_matrix(mode = "undirected")
+#' net %>% plot(vertex.size=4, vertex.label.dist=0.5, vertex.color="red", edge.arrow.size=0.5, layout=layout_in_circle(net))
 #' ## Remark: mathematical standardization will be automatically done within the function.
 PCGII=function(df, prior, lambda){
   require(glmnet)
