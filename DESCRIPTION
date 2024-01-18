@@ -1,11 +1,12 @@
 Package: PCGII
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Partial Correlation Graph with Information Incorporation
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Hao Wang, Yumou Qiu, Peng Liu
+Maintainer: Hao Wang <haydo.wang@outlook.com>
+Description: This package is developed for estimating and testing partial correlation graphs with prior information incorporated.
+    For the detailed methodology, please see the paper.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.2.3
