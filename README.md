@@ -80,22 +80,22 @@ Network analysis of data matrix `X`.
 > lam=2*sqrt(log(p)/n)
 >
 > # create prior set: directed prior network
-> prior_set=matrix(data=c(9,15, 3,4, 5,24, 16,20, 25,22, 28,8, 11,4), nrow=7, ncol=2, byrow = TRUE)
+> prior_set=matrix(data=c(6,5, 28,14), nrow=2, ncol=2, byrow = TRUE)
 > colnames(prior_set)=c("row", "col")
-> PCGII_out1=PCGII(df=X, prior=as.data.frame(prior_set), lambda = lam)
-> inference_out1=inference(list=PCGII_out1)
-> inference_out1$sigs # a data frame of pairs of nodes with significant partial correlations
+> PCGII_out=PCGII(df=X, prior=as.data.frame(prior_set), lambda = lam)
+> inference_out=inference(list=PCGII_out)
+> diag(inference_out)=0
 > # Visualization
-> inference_out1$sigs %>% sigs2mat(P=p)  %>%
+> inference_out %>%
 +   graph_from_adjacency_matrix(mode = "undirected") %>%
 +   plot(vertex.size=4, vertex.label.dist=0.5, vertex.color="red", edge.arrow.size=0.5)
 >
 > # create prior set: undirected prior network
-> PCGII_out2=PCGII(df=X, prior=double_prior(prior_set), lambda = lam)
-> inference_out2=inference(list=PCGII_out2)
-> inference_out2$sigs # a data frame of pairs of nodes with significant partial correlations
+> PCGII_out=PCGII(df=X, prior=undirected_prior(prior_set), lambda = lam)
+> inference_out=inference(list=PCGII_out)
+> diag(inference_out)=0
 > # Visualization
-> inference_out2$sigs %>% sigs2mat(P=p)  %>%
+> inference_out %>%
 +   graph_from_adjacency_matrix(mode = "undirected") %>%
 +   plot(vertex.size=4, vertex.label.dist=0.5, vertex.color="red", edge.arrow.size=0.5)
 ```
