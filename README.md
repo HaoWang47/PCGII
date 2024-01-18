@@ -6,11 +6,25 @@ Information-incorporated Gene Network Construction with FDR Control
 > Hao Wang, Yumou Qiu and Peng Liu.
 
 ### Contact:
-> [halewang@iastate.edu] (Hao Wang)
+> [haydo.wang@outlook.com] (Hao Wang)
 
 ### Citation:
 > Wang, H., Qiu, Y.\*, Guo, H., Yin, Y., Liu, P.\*, 2023+. Information-incorporated Gene Network Construction with FDR Control. To be submitted.
 -----
+
+# Installation and Package loading
+```r
+# R version is required >= 3.4.4
+# When the first time to use the package, please make sure dependent packages are installed under your R environment, if not, please use commands below to install
+> install.packages("tidyverse")
+> install.packages("glmnet")
+> install.packages("mvtnorm")
+> install.packages("igraph")
+> install.packages("Matrix")
+# install "devtools" package in your R environment
+> devtools::install_github("HaoWang47/PCGII")
+> library(PCGII)
+```
 
 This is a tutorial script for researchers who are interested in applying PCGII on omics data to learn the direct association structure of omics features. The main function `PGCII()` takes a biologically pre-processed expression data matrix as input, and returns a list of statistics (estimates and test statistics). The function `inference()` takes a list returned by `PGCII()` as input and conduct simultaneous test to identify significant partial correlations with False Discovery Rate (FDR) controlled at a pre-determined nominal level (0.05 by default).
 
@@ -34,22 +48,9 @@ This is a tutorial script for researchers who are interested in applying PCGII o
   - Input:
     - `list`: a list returned by either `PCGII()` or `clevel()`.
     - `alpha`: pre-determined False Discovery Rate. Nominal FDR is set at 0.05 by default.
-  - Output:
-    - `out`: a list contains the dataframe of pairs with significant partial correlations.
+  - Output: an adjacency matrix of significant partial correlations.
 
 -----
-
-# Package/functions loading
-```r
-# R version is required >= 4.1.2
-# When the first time to use the package, please make sure all required packages are installed under your R environment
-> library(igraph)
-> library(tidyverse)
-> library(corpcor)
-> library(glmnet)
-> source("./R/PCGII.R")
-> source("./R/Utility.R")
-```
 
 # Data Preparation
 
@@ -78,21 +79,7 @@ Simulate data $X$ from a scale-free network $g$.
 > n=50 # sample size
 > p=30 # number of nodes
 >
-> g=sample_pa(p, power=1, m=1, directed = FALSE) # undirected scale-free network with the power of the preferential attachment set as 1, the number of edges to add in each time step set as 2.
-> plot(g, vertex.size=4, vertex.label.dist=0.5, vertex.color="red", edge.arrow.size=0.5) # visulize simulated network structure
-> omega=as_adjacency_matrix(g) %>% as.matrix() # precision matrix structure corresponding to the simulated scale-free networ
-> for(h1 in 1:(p-1)){
-+   for(h2 in (h1+1):p){
-+     if(omega[h1,h2]!=0){
-+       temp=runif(1, 0.2, 0.5)*sample(c(-1,1),size=1) # randomly assign connection strength, i.e. partial correlations
-+       omega[h1,h2]=temp
-+       omega[h2,h1]=temp
-+     }
-+   }
-+ }
->
-> diag(omega)=rowSums(abs(omega)) # make sure precision matrix is positive definite
-> diag(omega)=diag(omega)+0.10
+> omega=make_random_precision_mat(eta=.01, p=p)
 >
 > Sigma=solve(omega) # population covariance matrix, which is used to generate data
 > X = rmvnorm(n = n, sigma = Sigma) # simulate expression data
@@ -125,52 +112,3 @@ Network analysis of data matrix `X`.
 +   plot(vertex.size=4, vertex.label.dist=0.5, vertex.color="red", edge.arrow.size=0.5)
 ```
 
-For more examples, please see R script `demo.R`.
-
-
-# Visualization
-
-To visualize a reconstructed biological network, we will continue analyzing the toy example where the simulated data is consisted of 30 genes, 50 samples from two treatment groups, and apply package `igraph` to plot the network.
-
-Example:
-
-```r
-> load("./Data/simulated_data_twogroups.RData")
-> n=nrow(X)
-> p=X %>% select(-treatment) %>% ncol()
-> temp=X %>% group_by(treatment) %>% summarise_all(mean) %>% select(-treatment) %>% as.matrix()
-> temp=temp[rep(1:nrow(temp), each=n/2),]
-> X_centered_by_group=X[,1:p]-temp
-> prior_set=matrix(data=c(9,15, 3,4, 5,24, 16,20, 25,22, 28,8, 11,4), nrow=7, ncol=2, byrow = TRUE) # prior set
-> colnames(prior_set)=c("row", "col")
-> lam=2*sqrt(log(p)/n) ## fixed lambda
-> PCGII_out=PCGII(df=X_centered_by_group, prior=double_prior(prior_set), lambda = lam)
-> set.seed(333)
-> nodenames=colnames(X[,1:p])
-> inference_out=inference(PCGII_out)$sigs %>% mutate(weight=0)
-> # assign weights to each connected pair of nodes, weight is equal to corresponding estimated partial correlatio
-> for (k in 1:nrow(inference_out)) {
-+   inference_out$weight[k]=PCGII_out$Est[inference_out$row[k],inference_out$col[k]]
-+ }
-> my_link=inference_out  %>%
-+   transform(row = pmin(row, col), col = pmax(row, col)) %>%
-+   arrange(row, col) %>%
-+   unique() %>%
-+   mutate(type=ifelse(weight<0,2,1))
-> colnames(my_link)[1:2]=c("from","to")
-> my_node=cbind.data.frame(id=1:p, gene=nodenames, types=c(rep(1,10),rep(2,10),rep(3,10)),type.label=c(rep("gene set 1",10),rep("gene set 2",10),rep("gene set 3",10)))
-> my_net <- graph_from_data_frame(d=my_link, vertices=my_node, directed=F)
->
-> Ecolrs=c("skyblue","pink")
-> Vcolrs=c("gray80", "tomato", "gold")
-> V(my_net)$color <- Vcolrs[V(my_net)$types]
-> E(my_net)$width <- abs(E(my_net)$weight)*2
-> plot(my_net, edge.arrow.size=.2, edge.color=Ecolrs[E(my_net)$type],
-+      vertex.frame.color="#ffffff",
-+      vertex.label=V(my_net)$gene, vertex.label.color="black",
-+      layout=layout_in_circle(my_net))
-```
-
-The following plot is a network of 30 nodes reconstructed by PCGII. 7 connections are randomly included in the prior set, among which 1 connection does not really exist. Blue edges correspond to true positives and red edges represent false positives with nominal FDR controlled at 0.05. The thickness of the edge indicates the magnitude of estimated partial correlations.
-
-![Visualization Result](./figs/Example_Visualization.png)
