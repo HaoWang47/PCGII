@@ -37,7 +37,7 @@ X = rmvnorm(n = n, sigma = Sigma)
 lam=2*sqrt(log(p)/n) ## fixed lambda
 
 CLEVEL_out=clevel(df=X, lambda = lam)
-inference_out=inference(list=PCGII_out1)
+inference_out=inference(list=CLEVEL_out)
 diag(inference_out)=0
 net=inference_out \%>\% graph_from_adjacency_matrix(mode = "undirected")
 net \%>\% plot(vertex.size=4, vertex.label.dist=0.5, vertex.color="red", edge.arrow.size=0.5, layout=layout_in_circle(net))
