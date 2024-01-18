@@ -1,4 +1,4 @@
-# PCGII [![](https://img.shields.io/badge/Release-v0.1.0-blue.svg)](https://github.com/shanwai1234/GPWAS/commits/master) [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+# PCGII [![](https://img.shields.io/badge/Release-v0.1.0-blue.svg)](https://github.com/haowang47/PCGII/commits/main) [![License: MIT v3](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/license/mit/)
 
 Information-incorporated Gene Network Construction with FDR Control
 
