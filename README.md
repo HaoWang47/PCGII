@@ -1,6 +1,6 @@
 # PCGII [![](https://img.shields.io/badge/Release-v0.1.0-blue.svg)](https://github.com/haowang47/PCGII/commits/main) [![License: MIT v3](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/license/mit/)
 
-Information-incorporated Gene Network Construction with FDR Control
+R Package for Information-incorporated Gene Network Construction with FDR Control
 
 ### Authors:
 > Hao Wang, Yumou Qiu and Peng Liu.
@@ -9,7 +9,7 @@ Information-incorporated Gene Network Construction with FDR Control
 > [haydo.wang@outlook.com] (Hao Wang)
 
 ### Citation:
-> Wang, H., Qiu, Y.\*, Guo, H., Yin, Y., Liu, P.\*, 2023+. Information-incorporated Gene Network Construction with FDR Control. To be submitted.
+> Wang, H., Qiu, Y.\*, Guo, H., Yin, Y., Liu, P.\*, 2024. Information-incorporated Gene Network Construction with FDR Control. Under review.
 -----
 
 # Installation and Package loading
