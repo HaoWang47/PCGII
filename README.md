@@ -52,23 +52,6 @@ This is a tutorial script for researchers who are interested in applying PCGII o
 
 -----
 
-# Data Preparation
-
-To apply PCGII on omics dataset, some data pre-processing is necessary. For example, gene expression data is supposed to be normalized. Depending on the biological assumptions, treatment effects (group means) can be subtracted ahead if the covariance structures are believe to be the same across treatment groups. Mathematical standardization is not required, which will be automatically done within the function.
-
-Example:
-
-```r
-> load("./Data/simulated_data_twogroups.RData")
-> X %>% group_by(treatment) %>% summarise_all(mean)
-> n=nrow(X) # sample size
-> p=X %>% select(-treatment) %>% ncol() # number of nodes
-> temp=X %>% group_by(treatment) %>% summarise_all(mean) %>% select(-treatment) %>% as.matrix() # mean expression matrix by treatment groups
-> temp=temp[rep(1:nrow(temp), each=n/2),] # duplicating the mean matrix
-> X_centered_by_group=X[,1:p]-temp # expression data centered within treatment groups, ready for network analysis
-```
-
-
 # Network Analysis
 
 Simulate data $X$ from a scale-free network $g$.
