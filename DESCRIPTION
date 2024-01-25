@@ -1,7 +1,7 @@
 Package: PCGII
 Type: Package
 Title: Partial Correlation Graph with Information Incorporation
-Version: 0.1.0
+Version: 1.1.2
 Author: Hao Wang, Yumou Qiu, Peng Liu
 Maintainer: Hao Wang <haydo.wang@outlook.com>
 Description: This package is developed for estimating and testing partial correlation graphs with prior information incorporated.

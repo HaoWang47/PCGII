@@ -36,23 +36,39 @@ This is a tutorial script for researchers who are interested in applying PCGII o
 ### Usage
 
 ```PCGII()```:
+
   - Input:
+
     - `df`: the main expression data, an $n$ by $p$ matrix/dataframe, in which each row corresponds to a sample and each column represents expression/abundance of an omics feature;
+
     - `prior`: the prior set, a $k$ by $2$ dataframe, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief. Note, prior input has to be dataframe with column names **"row"** and **"col"**;
+
     - `lambda`: the regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of $\sqrt{2\times log(p/\sqrt{n})/n}$.
+
   - Remark: mathematical standardization will be automatically done within the function.
+
   - Output: This function returns a list of
+
     - `Est`: estimated partial correlation matrix;
+
     - `EstThresh`: sparse partial correlation estimation matrix with threshold;
+
     - `kappa`: estimated ratio of forth and squared second moment of residuals, please refer to the manuscript for details;
+
     - `tscore`: estimated test statistics matrix of partial correlations;
+
     - `n`: sample size;
+
     - `p`: number of genes under study.
 
 ```Inference()```:
+
   - Input:
+
     - `list`: a list returned by either `PCGII()` or `clevel()`.
+
     - `alpha`: pre-determined False Discovery Rate. Nominal FDR is set at 0.05 by default.
+
   - Output: an adjacency matrix of significant partial correlations.
 
 -----

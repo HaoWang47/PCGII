@@ -9,6 +9,7 @@
 #' library(igraph)
 #' library(tidyverse)
 #' library(PCGII)
+#' library(mvtnorm)
 #' # Simulating data
 #' set.seed(1234567)
 #' n=50 # sample size
