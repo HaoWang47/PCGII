@@ -2,6 +2,7 @@
 #'
 #' @export make_sf_precision_mat
 #' @param e Numeric constant, the number of edges to add in each time step, see sample_pa {igraph}
+#' @param power Numeric constant, the power of the preferential attachment for scale-free network, the default is one, i.e. linear preferential attachment.
 #' @param p A positive integer, the number of vertices.
 #' @param lower A positive number, lower limits of the uniform distribution.
 #' @param upper A positive number, upper limits of the uniform distribution.
