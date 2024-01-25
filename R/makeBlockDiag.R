@@ -19,5 +19,5 @@ makeBlockDiag=function(blocksize=4, p=20, min.beta=0.3, max.beta=0.9){ # blocksi
     while(!is.positive.definite(bd)){diag(bd)=diag(bd)+0.01}
     S[[i]]=bd
   }
-  as.matrix(bdiag(S))
+  as.matrix(Matrix::bdiag(S))
 }
