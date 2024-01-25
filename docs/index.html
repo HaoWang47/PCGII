@@ -119,8 +119,40 @@
 <div class="section level3">
 <h3 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h3>
-<p><code><a href="reference/PCGII.html">PCGII()</a></code>: - Input: - <code>df</code>: the main expression data, an <span class="math inline"><em>n</em></span> by <span class="math inline"><em>p</em></span> matrix/dataframe, in which each row corresponds to a sample and each column represents expression/abundance of an omics feature; - <code>prior</code>: the prior set, a <span class="math inline"><em>k</em></span> by <span class="math inline">2</span> dataframe, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief. Note, prior input has to be dataframe with column names <strong>“row”</strong> and <strong>“col”</strong>; - <code>lambda</code>: the regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of <span class="math inline">$\sqrt{2\times log(p/\sqrt{n})/n}$</span>. - Remark: mathematical standardization will be automatically done within the function. - Output: This function returns a list of - <code>Est</code>: estimated partial correlation matrix; - <code>EstThresh</code>: sparse partial correlation estimation matrix with threshold; - <code>kappa</code>: estimated ratio of forth and squared second moment of residuals, please refer to the manuscript for details; - <code>tscore</code>: estimated test statistics matrix of partial correlations; - <code>n</code>: sample size; - <code>p</code>: number of genes under study.</p>
-<p><code>Inference()</code>: - Input: - <code>list</code>: a list returned by either <code><a href="reference/PCGII.html">PCGII()</a></code> or <code><a href="reference/clevel.html">clevel()</a></code>. - <code>alpha</code>: pre-determined False Discovery Rate. Nominal FDR is set at 0.05 by default. - Output: an adjacency matrix of significant partial correlations.</p>
+<p><code><a href="reference/PCGII.html">PCGII()</a></code>:</p>
+<ul>
+<li>
+<p>Input:</p>
+<ul>
+<li><p><code>df</code>: the main expression data, an <span class="math inline"><em>n</em></span> by <span class="math inline"><em>p</em></span> matrix/dataframe, in which each row corresponds to a sample and each column represents expression/abundance of an omics feature;</p></li>
+<li><p><code>prior</code>: the prior set, a <span class="math inline"><em>k</em></span> by <span class="math inline">2</span> dataframe, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief. Note, prior input has to be dataframe with column names <strong>“row”</strong> and <strong>“col”</strong>;</p></li>
+<li><p><code>lambda</code>: the regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of <span class="math inline">$\sqrt{2\times log(p/\sqrt{n})/n}$</span>.</p></li>
+</ul>
+</li>
+<li><p>Remark: mathematical standardization will be automatically done within the function.</p></li>
+<li>
+<p>Output: This function returns a list of</p>
+<ul>
+<li><p><code>Est</code>: estimated partial correlation matrix;</p></li>
+<li><p><code>EstThresh</code>: sparse partial correlation estimation matrix with threshold;</p></li>
+<li><p><code>kappa</code>: estimated ratio of forth and squared second moment of residuals, please refer to the manuscript for details;</p></li>
+<li><p><code>tscore</code>: estimated test statistics matrix of partial correlations;</p></li>
+<li><p><code>n</code>: sample size;</p></li>
+<li><p><code>p</code>: number of genes under study.</p></li>
+</ul>
+</li>
+</ul>
+<p><code>Inference()</code>:</p>
+<ul>
+<li>
+<p>Input:</p>
+<ul>
+<li><p><code>list</code>: a list returned by either <code><a href="reference/PCGII.html">PCGII()</a></code> or <code><a href="reference/clevel.html">clevel()</a></code>.</p></li>
+<li><p><code>alpha</code>: pre-determined False Discovery Rate. Nominal FDR is set at 0.05 by default.</p></li>
+</ul>
+</li>
+<li><p>Output: an adjacency matrix of significant partial correlations.</p></li>
+</ul>
 <hr>
 </div>
 </div>
