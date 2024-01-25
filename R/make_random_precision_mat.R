@@ -11,7 +11,6 @@
 #' omega = make_random_precision_mat(eta=.2, p=10)
 make_random_precision_mat=function(eta=.01, p=20, lower=.2, upper=.5, diag=0.1){
   require(igraph)
-  require(tidyverse)
   g <- sample_gnp(n=p, p=eta, directed = FALSE)
   omega=as.matrix(as_adjacency_matrix(g))
   for(h1 in 1:(p-1)){
