@@ -10,7 +10,8 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  dpi = 300
 )
 ```
 
@@ -32,5 +33,39 @@ Three methods of generating a network structure were included in PCGII, includin
 ```{r data}
 set.seed(010120000)
 ## Simulate precision matrix as your true network structure
-Omega = make_sf_precision_mat(e = 1, p = 100)
+N_nodes = 100
+N_samples = 30
+Omega = make_sf_precision_mat(e = 1, p = N_nodes)
+Sigma = solve(Omega)
+mu = exp(qnorm(seq(from = 0.01, to = 0.99, length.out = N_nodes), mean = 2, sd=1))
+norm_data = mvtnorm::rmvnorm(n = N_samples, mean = mu, sigma = Sigma)
+## Convert simulated normal data to expression count data
+norm_data[norm_data<0] = 0
+Exp_data = round(norm_data)
+```
+
+```{r display the true network, fig.align='center', fig.cap="True Network Connections, auto-layout", fig.height=8, fig.width=8, out.width="80%"}
+## Display the true network
+nodenames = 1:N_nodes
+links = which(lower.tri(Omega) & Omega!=0, arr.ind = TRUE)
+my_net <- graph_from_data_frame(d=links, vertices=nodenames, directed=F) 
+Ecolrs=c("gray50")
+Vcolrs=c("gold")
+plot(my_net, 
+     edge.arrow.size=.5, 
+     edge.color=Ecolrs,
+     vertex.frame.color="#ffffff",
+     vertex.label.color="black",
+     vertex.size=3,
+     layout=layout.auto(my_net)) 
+```
+
+```{r, fig.align='center', fig.cap="True Network Connections, circle-layout", fig.height=8, fig.width=8, out.width="80%"}
+plot(my_net, 
+     edge.arrow.size=.5, 
+     edge.color=Ecolrs,
+     vertex.frame.color="#ffffff",
+     vertex.label.color="black",
+     vertex.size=3,
+     layout=layout.circle(my_net)) 
 ```
