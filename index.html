@@ -119,7 +119,7 @@
 <li>
 <code>prior</code>: the prior set, a <span class="math inline"><em>k</em></span> by <span class="math inline">2</span> dataframe, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief. Note, prior input has to be dataframe with column names <strong>“row”</strong> and <strong>“col”</strong>;</li>
 <li>
-<code>lambda</code>: the regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of <span class="math inline">$\sqrt{2\times log(p/\sqrt{n})/n}$</span>.</li>
+<code>lambda</code>: the regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of sqrt(2log(p/sqrt(n))/n).</li>
 </ul>
 </li>
 <li>Remark: mathematical standardization will be automatically done within the function.</li>
