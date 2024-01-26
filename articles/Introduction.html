@@ -144,7 +144,47 @@ with a network with 100 nodes.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">010120000</span><span class="op">)</span></span>
 <span><span class="co">## Simulate precision matrix as your true network structure</span></span>
-<span><span class="va">Omega</span> <span class="op">=</span> <span class="fu"><a href="../reference/make_sf_precision_mat.html">make_sf_precision_mat</a></span><span class="op">(</span>e <span class="op">=</span> <span class="fl">1</span>, p <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">N_nodes</span> <span class="op">=</span> <span class="fl">100</span></span>
+<span><span class="va">N_samples</span> <span class="op">=</span> <span class="fl">30</span></span>
+<span><span class="va">Omega</span> <span class="op">=</span> <span class="fu"><a href="../reference/make_sf_precision_mat.html">make_sf_precision_mat</a></span><span class="op">(</span>e <span class="op">=</span> <span class="fl">1</span>, p <span class="op">=</span> <span class="va">N_nodes</span><span class="op">)</span></span>
+<span><span class="va">Sigma</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/solve-methods.html" class="external-link">solve</a></span><span class="op">(</span><span class="va">Omega</span><span class="op">)</span></span>
+<span><span class="va">mu</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0.01</span>, to <span class="op">=</span> <span class="fl">0.99</span>, length.out <span class="op">=</span> <span class="va">N_nodes</span><span class="op">)</span>, mean <span class="op">=</span> <span class="fl">2</span>, sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">norm_data</span> <span class="op">=</span> <span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html" class="external-link">rmvnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">N_samples</span>, mean <span class="op">=</span> <span class="va">mu</span>, sigma <span class="op">=</span> <span class="va">Sigma</span><span class="op">)</span></span>
+<span><span class="co">## Convert simulated normal data to expression count data</span></span>
+<span><span class="va">norm_data</span><span class="op">[</span><span class="va">norm_data</span><span class="op">&lt;</span><span class="fl">0</span><span class="op">]</span> <span class="op">=</span> <span class="fl">0</span></span>
+<span><span class="va">Exp_data</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">norm_data</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Display the true network</span></span>
+<span><span class="va">nodenames</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">N_nodes</span></span>
+<span><span class="va">links</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lower.tri.html" class="external-link">lower.tri</a></span><span class="op">(</span><span class="va">Omega</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">Omega</span><span class="op">!=</span><span class="fl">0</span>, arr.ind <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">my_net</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r.igraph.org/reference/graph_from_data_frame.html" class="external-link">graph_from_data_frame</a></span><span class="op">(</span>d<span class="op">=</span><span class="va">links</span>, vertices<span class="op">=</span><span class="va">nodenames</span>, directed<span class="op">=</span><span class="cn">F</span><span class="op">)</span> </span>
+<span><span class="va">Ecolrs</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gray50"</span><span class="op">)</span></span>
+<span><span class="va">Vcolrs</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gold"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my_net</span>, </span>
+<span>     edge.arrow.size<span class="op">=</span><span class="fl">.5</span>, </span>
+<span>     edge.color<span class="op">=</span><span class="va">Ecolrs</span>,</span>
+<span>     vertex.frame.color<span class="op">=</span><span class="st">"#ffffff"</span>,</span>
+<span>     vertex.label.color<span class="op">=</span><span class="st">"black"</span>,</span>
+<span>     vertex.size<span class="op">=</span><span class="fl">3</span>,</span>
+<span>     layout<span class="op">=</span><span class="fu"><a href="https://r.igraph.org/reference/layout_nicely.html" class="external-link">layout.auto</a></span><span class="op">(</span><span class="va">my_net</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="Introduction_files/figure-html/display%20the%20true%20network-1.png" alt="True Network Connections, auto-layout" width="80%"><p class="caption">
+True Network Connections, auto-layout
+</p>
+</div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my_net</span>, </span>
+<span>     edge.arrow.size<span class="op">=</span><span class="fl">.5</span>, </span>
+<span>     edge.color<span class="op">=</span><span class="va">Ecolrs</span>,</span>
+<span>     vertex.frame.color<span class="op">=</span><span class="st">"#ffffff"</span>,</span>
+<span>     vertex.label.color<span class="op">=</span><span class="st">"black"</span>,</span>
+<span>     vertex.size<span class="op">=</span><span class="fl">3</span>,</span>
+<span>     layout<span class="op">=</span><span class="fu"><a href="https://r.igraph.org/reference/layout.deprecated.html" class="external-link">layout.circle</a></span><span class="op">(</span><span class="va">my_net</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="Introduction_files/figure-html/unnamed-chunk-2-1.png" alt="True Network Connections, circle-layout" width="80%"><p class="caption">
+True Network Connections, circle-layout
+</p>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
