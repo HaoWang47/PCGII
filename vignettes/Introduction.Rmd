@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 To start using PCGII, prepare your gene expression data and your prior knowledge about gene-gene direct associations in the target network. Two methods were implemented in the package, **PCGII** for the case when you have prior knowledge and **CLEVEL** for the case when you do not have prior knowledge. You can select one of two methods to construct the gene network. Incorporating false information could lead to an inflation of the empirical FDR. As a result, we strongly recommend incorporating only high-confidence information in real data applications. 
 
 ```{r setup}
-devtools::install_github("HaoWang47/PCGII")
+# devtools::install_github("HaoWang47/PCGII")
 library(PCGII)
 ```
 
