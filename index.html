@@ -80,10 +80,9 @@
 <div class="section level3">
 <h3 id="citation">Citation:<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h3>
-</div>
-<div class="section level2">
-<h2 id="id_-wang-h-qiu-y-guo-h-yin-y-liu-p-2024-information-incorporated-gene-network-construction-with-fdr-control-under-review">&gt; Wang, H., Qiu, Y.*, Guo, H., Yin, Y., Liu, P.*, 2024. Information-incorporated Gene Network Construction with FDR Control. Under review.<a class="anchor" aria-label="anchor" href="#id_-wang-h-qiu-y-guo-h-yin-y-liu-p-2024-information-incorporated-gene-network-construction-with-fdr-control-under-review"></a>
-</h2>
+<blockquote>
+<p>Wang, H., Qiu, Y.*, Guo, H., Yin, Y., Liu, P.*, 2024. Information-incorporated Gene Network Construction with FDR Control. Under review.</p>
+</blockquote>
 </div>
 </div>
 <div class="section level1">
@@ -103,43 +102,63 @@
 <div class="section level3">
 <h3 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h3>
-<pre class="pcgii()```:"><code>
-  - Input:
-    - `df`: the main expression data, an $n$ by $p$ matrix/dataframe, in which each row corresponds to a sample and each column represents expression/abundance of an omics feature;
-    - `prior`: the prior set, a $k$ by $2$ dataframe, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief. Note, prior input has to be dataframe with column names **"row"** and **"col"**;
-    - `lambda`: the regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of $\sqrt{2\times log(p/\sqrt{n})/n}$.
-  - Remark: mathematical standardization will be automatically done within the function.
-  - Output: This function returns a list of
-    - `Est`: estimated partial correlation matrix;
-    - `EstThresh`: sparse partial correlation estimation matrix with threshold;
-    - `kappa`: estimated ratio of forth and squared second moment of residuals, please refer to the manuscript for details;
-    - `tscore`: estimated test statistics matrix of partial correlations;
-    - `n`: sample size;
-    - `p`: number of genes under study.
-
-```Inference()```:
-
-  - Input:
-    - `list`: a list returned by either `PCGII()` or `clevel()`.
-    - `alpha`: pre-determined False Discovery Rate. Nominal FDR is set at 0.05 by default.
-  - Output: an adjacency matrix of significant partial correlations.
-
------
-
-# Network Analysis
-
-Simulate data $X$ from a scale-free network $g$.
-
-```r
-&gt; # Simulating data
-&gt; set.seed(1234567)
-&gt; n=50 # sample size
-&gt; p=30 # number of nodes
-&gt;
-&gt; omega=make_random_precision_mat(eta=.01, p=p)
-&gt;
-&gt; Sigma=solve(omega) # population covariance matrix, which is used to generate data
-&gt; X = rmvnorm(n = n, sigma = Sigma) # simulate expression data</code></pre>
+<p><code><a href="reference/PCGII.html">PCGII()</a></code></p>
+<ul>
+<li>Input:
+<ul>
+<li>
+<code>df</code>: the main expression data, an <span class="math inline"><em>n</em></span> by <span class="math inline"><em>p</em></span> matrix/dataframe, in which each row corresponds to a sample and each column represents expression/abundance of an omics feature;</li>
+<li>
+<code>prior</code>: the prior set, a <span class="math inline"><em>k</em></span> by <span class="math inline">2</span> dataframe, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief. Note, prior input has to be dataframe with column names <strong>“row”</strong> and <strong>“col”</strong>;</li>
+<li>
+<code>lambda</code>: the regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of <span class="math inline">$\sqrt{2\times log(p/\sqrt{n})/n}$</span>.</li>
+</ul>
+</li>
+<li>Remark: mathematical standardization will be automatically done within the function.</li>
+<li>Output: This function returns a list of
+<ul>
+<li>
+<code>Est</code>: estimated partial correlation matrix;</li>
+<li>
+<code>EstThresh</code>: sparse partial correlation estimation matrix with threshold;</li>
+<li>
+<code>kappa</code>: estimated ratio of forth and squared second moment of residuals, please refer to the manuscript for details;</li>
+<li>
+<code>tscore</code>: estimated test statistics matrix of partial correlations;</li>
+<li>
+<code>n</code>: sample size;</li>
+<li>
+<code>p</code>: number of genes under study.</li>
+</ul>
+</li>
+</ul>
+<p><code>Inference()</code></p>
+<ul>
+<li>Input:
+<ul>
+<li>
+<code>list</code>: a list returned by either <code><a href="reference/PCGII.html">PCGII()</a></code> or <code><a href="reference/clevel.html">clevel()</a></code>.</li>
+<li>
+<code>alpha</code>: pre-determined False Discovery Rate. Nominal FDR is set at 0.05 by default.</li>
+</ul>
+</li>
+<li>Output: an adjacency matrix of significant partial correlations.</li>
+</ul>
+</div>
+</div>
+<div class="section level1">
+<h1 id="network-analysis">Network Analysis<a class="anchor" aria-label="anchor" href="#network-analysis"></a>
+</h1>
+<p>Simulate data <span class="math inline"><em>X</em></span> from a scale-free network <span class="math inline"><em>g</em></span>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Simulating data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">1234567</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> n<span class="ot">=</span><span class="dv">50</span> <span class="co"># sample size</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p<span class="ot">=</span><span class="dv">30</span> <span class="co"># number of nodes</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> omega<span class="ot">=</span><span class="fu">make_random_precision_mat</span>(<span class="at">eta=</span>.<span class="dv">01</span>, <span class="at">p=</span>p)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> Sigma<span class="ot">=</span><span class="fu">solve</span>(omega) <span class="co"># population covariance matrix, which is used to generate data</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> X <span class="ot">=</span> <span class="fu">rmvnorm</span>(<span class="at">n =</span> n, <span class="at">sigma =</span> Sigma) <span class="co"># simulate expression data</span></span></code></pre></div>
 <p>Network analysis of data matrix <code>X</code>.</p>
 <pre><code>&gt; # determine tuning parameter: fixed lambda
 &gt; lam=2*sqrt(log(p)/n)
@@ -163,7 +182,6 @@ Simulate data $X$ from a scale-free network $g$.
 &gt; inference_out %&gt;%
 +   graph_from_adjacency_matrix(mode = "undirected") %&gt;%
 +   plot(vertex.size=4, vertex.label.dist=0.5, vertex.color="red", edge.arrow.size=0.5)</code></pre>
-</div>
 </div>
 
   </main><aside class="col-md-3"><div class="license">
