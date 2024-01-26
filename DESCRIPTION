@@ -4,9 +4,10 @@ Title: Partial Correlation Graph with Information Incorporation
 Version: 1.1.2
 Author: Hao Wang, Yumou Qiu, Peng Liu
 Maintainer: Hao Wang <haydo.wang@outlook.com>
-Description: This package is developed for estimating and testing partial
-    correlation graphs with prior information incorporated.  For the
-    detailed methodology, please see the paper.
+Description: Large-scale gene expression studies allow gene network construction 
+    to uncover associations among genes. This package is developed for estimating 
+    and testing partial correlation graphs with prior information incorporated.  
+    For the detailed methodology, please see the paper.
 License: MIT + file LICENSE
 URL: https://haowang47.github.io/PCGII/
 Depends: R(>= 4.3.0)
