@@ -16,19 +16,15 @@ R Package for Information-incorporated Gene Network Construction with FDR Contro
 ```r
 # R version is required >= 3.4.4
 # When the first time to use the package, please make sure dependent packages are installed under your R environment, if not, please use commands below to install
-> install.packages("tidyverse")
-> install.packages("glmnet")
-> install.packages("mvtnorm")
-> install.packages("igraph")
-> install.packages("Matrix")
+> #install.packages("tidyverse")
+> #install.packages("glmnet")
+> #install.packages("mvtnorm")
+> #install.packages("igraph")
+> #install.packages("Matrix")
 # install "devtools" package in your R environment
-> devtools::install_github("HaoWang47/PCGII")
+> # devtools::install_github("HaoWang47/PCGII")
 > library(PCGII)
-> library(tidyverse)
-> library(glmnet)
-> library(igraph)
-> library(mvtnorm)
-> library(Matrix)
+
 ```
 
 This is a tutorial script for researchers who are interested in applying PCGII on omics data to learn the direct association structure of omics features. The main function `PGCII()` takes a biologically pre-processed expression data matrix as input, and returns a list of statistics (estimates and test statistics). The function `inference()` takes a list returned by `PGCII()` as input and conduct simultaneous test to identify significant partial correlations with False Discovery Rate (FDR) controlled at a pre-determined nominal level (0.05 by default).

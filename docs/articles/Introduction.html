@@ -52,9 +52,6 @@
 <li>
       <a href="../articles/Introduction.html">Introduction</a>
     </li>
-    <li>
-      <a href="../articles/vignette.html">vignette</a>
-    </li>
   </ul>
 </li>
       </ul>
@@ -81,10 +78,29 @@
 
     
     
+<div class="section level2">
+<h2 id="intro">Intro<a class="anchor" aria-label="anchor" href="#intro"></a>
+</h2>
+<p><code>PCGII</code> is an R package developed for
+Information-incorporated Gene Network Construction with FDR Control.
+PCGII stands for <strong>P</strong>artial <strong>C</strong>orrelation
+<strong>G</strong>raphs with <strong>I</strong>nformation
+<strong>I</strong>ncorporation.</p>
+<p>To start using PCGII, prepare your gene expression data and your
+prior knowledge about gene-gene direct associations in the target
+network. Two methods were implemented in the package,
+<strong>PCGII</strong> for the case when you have prior knowledge and
+<strong>CLEVEL</strong> for the case when you do not have prior
+knowledge. You can select one of two methods to construct the gene
+network. Incorporating false information could lead to an inflation of
+the empirical FDR. As a result, we strongly recommend incorporating only
+high-confidence information in real data applications.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">PCGII</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># devtools::install_github("HaoWang47/PCGII")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">PCGII</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: corpcor</span></span>
 <span><span class="co">#&gt; Loading required package: igraph</span></span>
+<span><span class="co">#&gt; Warning: package 'igraph' was built under R version 4.3.1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Attaching package: 'igraph'</span></span>
 <span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
@@ -94,12 +110,17 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;     union</span></span>
 <span><span class="co">#&gt; Loading required package: tidyverse</span></span>
+<span><span class="co">#&gt; Warning: package 'ggplot2' was built under R version 4.3.1</span></span>
+<span><span class="co">#&gt; Warning: package 'tidyr' was built under R version 4.3.1</span></span>
+<span><span class="co">#&gt; Warning: package 'readr' was built under R version 4.3.1</span></span>
+<span><span class="co">#&gt; Warning: package 'dplyr' was built under R version 4.3.1</span></span>
+<span><span class="co">#&gt; Warning: package 'stringr' was built under R version 4.3.1</span></span>
 <span><span class="co">#&gt; Warning: package 'lubridate' was built under R version 4.3.1</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Attaching core tidyverse packages</span> ──────────────────────── tidyverse 2.0.0 ──</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">dplyr    </span> 1.1.2     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">readr    </span> 2.1.4</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">forcats  </span> 1.0.0     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">stringr  </span> 1.5.0</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">ggplot2  </span> 3.4.2     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tibble   </span> 3.2.1</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">lubridate</span> 1.9.3     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tidyr    </span> 1.3.0</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">dplyr    </span> 1.1.4     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">readr    </span> 2.1.5</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">forcats  </span> 1.0.0     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">stringr  </span> 1.5.1</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">ggplot2  </span> 3.4.4     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tibble   </span> 3.2.1</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">lubridate</span> 1.9.3     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tidyr    </span> 1.3.1</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">purrr    </span> 1.0.2</span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
 <span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">lubridate</span>::<span style="color: #00BB00;">%--%()</span>      masks <span style="color: #0000BB;">igraph</span>::%--%()</span></span>
@@ -120,13 +141,30 @@
 <span><span class="co">#&gt;     expand, pack, unpack</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Loading required package: mvtnorm</span></span>
+<span><span class="co">#&gt; Warning: package 'mvtnorm' was built under R version 4.3.1</span></span>
 <span><span class="co">#&gt; Loading required package: glmnet</span></span>
-<span><span class="co">#&gt; Loaded glmnet 4.1-7</span></span></code></pre></div>
+<span><span class="co">#&gt; Loaded glmnet 4.1-8</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="prepare-data">Prepare Data<a class="anchor" aria-label="anchor" href="#prepare-data"></a>
+</h2>
+<p>Three methods of generating a network structure were included in
+PCGII, including Scale Free Network Structure, Random Connection Network
+Structure, and Block Diagonal Network Structure. In this section, we
+will illustrate what are expected during data preparation. We will start
+with a network with 100 nodes.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">010120000</span><span class="op">)</span></span>
+<span><span class="co">## Simulate precision matrix as your true network structure</span></span>
+<span><span class="va">Omega</span> <span class="op">=</span> <span class="fu"><a href="../reference/make_sf_precision_mat.html">make_sf_precision_mat</a></span><span class="op">(</span>e <span class="op">=</span> <span class="fl">1</span>, p <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
