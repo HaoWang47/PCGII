@@ -260,14 +260,14 @@ Network Recovered by PCGII, circle-layout
 </div>
 </div>
 <div class="section level3">
-<h3 id="pcgii-inference-1">PCGII Inference<a class="anchor" aria-label="anchor" href="#pcgii-inference-1"></a>
+<h3 id="clevel-inference">CLEVEL Inference<a class="anchor" aria-label="anchor" href="#clevel-inference"></a>
 </h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">CLEVEL.out</span> <span class="op">=</span> <span class="fu"><a href="../reference/clevel.html">clevel</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">Exp_data</span>, lambda <span class="op">=</span> <span class="va">fixed_lamdba</span><span class="op">)</span></span>
 <span><span class="va">CLEVEL.inf</span> <span class="op">=</span> <span class="fu"><a href="../reference/inference.html">inference</a></span><span class="op">(</span><span class="va">CLEVEL.out</span>, alpha <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="display-significant-connections-detected-by-pcgii-1">Display significant connections detected by PCGII<a class="anchor" aria-label="anchor" href="#display-significant-connections-detected-by-pcgii-1"></a>
+<h3 id="display-significant-connections-detected-by-clevel">Display significant connections detected by CLEVEL<a class="anchor" aria-label="anchor" href="#display-significant-connections-detected-by-clevel"></a>
 </h3>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">CLEVEL_links</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lower.tri.html" class="external-link">lower.tri</a></span><span class="op">(</span><span class="va">CLEVEL.inf</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">CLEVEL.inf</span><span class="op">!=</span><span class="fl">0</span>, arr.ind <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
