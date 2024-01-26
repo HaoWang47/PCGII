@@ -2,3 +2,17 @@ url: https://haowang47.github.io/PCGII/
 template:
   bootstrap: 5
 
+development:
+  mode: auto
+
+authors:
+  Hao Wang:
+    href: https://haowang47.github.io/
+  footer:
+    text: "Crafted by"
+  sidebar:
+    roles: [aut, cre]
+
+home:
+  sidebar:
+    structure: [links, license, community, citation, authors, dev]
