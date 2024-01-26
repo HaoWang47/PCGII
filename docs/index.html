@@ -99,7 +99,13 @@
 <span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="er">&gt;</span> <span class="co">#install.packages("Matrix")</span></span>
 <span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co"># install "devtools" package in your R environment</span></span>
 <span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># devtools::install_github("HaoWang47/PCGII")</span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(PCGII)</span></code></pre></div>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(PCGII)</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(corpcor)</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(glmnet)</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(igraph)</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(Matrix)</span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(mvtnorm)</span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>This is a tutorial script for researchers who are interested in applying PCGII on omics data to learn the direct association structure of omics features. The main function <code>PGCII()</code> takes a biologically pre-processed expression data matrix as input, and returns a list of statistics (estimates and test statistics). The function <code><a href="reference/inference.html">inference()</a></code> takes a list returned by <code>PGCII()</code> as input and conduct simultaneous test to identify significant partial correlations with False Discovery Rate (FDR) controlled at a pre-determined nominal level (0.05 by default).</p>
 <div class="section level3">
 <h3 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
@@ -113,7 +119,7 @@
 <li>
 <code>prior</code>: the prior set, a <span class="math inline"><em>k</em></span> by <span class="math inline">2</span> dataframe, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief. Note, prior input has to be dataframe with column names <strong>“row”</strong> and <strong>“col”</strong>;</li>
 <li>
-<code>lambda</code>: the regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of <span class="math inline">$\sqrt{2\times log(p/\sqrt{n})/n}$</span>.</li>
+<code>lambda</code>: the regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of sqrt(2log(p/sqrt(n))/n).</li>
 </ul>
 </li>
 <li>Remark: mathematical standardization will be automatically done within the function.</li>
@@ -189,8 +195,9 @@
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+</li>
 </ul>
 </div>
 
