@@ -27,7 +27,7 @@ make_random_precision_mat(
 A precision matrix of size p by p.
 }
 \description{
-A utility function generates unstructured/random network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (−upper, −lower) union (lower, upper)
+A utility function generates unstructured/random network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (-upper, -lower) UNION (lower, upper).
 }
 \examples{
 omega = make_random_precision_mat(eta=.2, p=10)

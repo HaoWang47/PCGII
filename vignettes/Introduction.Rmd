@@ -3,7 +3,7 @@ title: "Introduction"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -82,7 +82,7 @@ Exp_data = round(norm_data)
 head(Exp_data[,1:10])
 ```
 
-For illustration, we will randomly selection partial true connections and use them as prior knowledge. It should be carefully considered if such prior connections are undirected (i.e. A-B OR A->B & B->A) in practice. Under the PCGII framework, it is recommended to use undirected connections as prior information.
+For illustration, we will randomly select a subset of true connections and use them as prior knowledge. It should be carefully considered if such prior connections are undirected (i.e. A-B OR A->B & B->A) in practice. Under the PCGII framework, it is recommended to use undirected connections as prior information.
 
 ```{r prior, fig.align='center', fig.cap="Prior Network Connections, circle-layout", fig.height=8, fig.width=8, out.width="80%"}
 prior_links = links[sample(1:nrow(links), .2*nrow(links)),]

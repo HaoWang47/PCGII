@@ -1,7 +1,7 @@
 #' Generate unstructured/random network skeleton and simulates corresponding precision matrix
 #'
 #' @description
-#' A utility function generates unstructured/random network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (−upper, −lower) union (lower, upper)
+#' A utility function generates unstructured/random network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (-upper, -lower) UNION (lower, upper).
 #'
 #' @importFrom igraph sample_gnp
 #' @importFrom igraph as_adjacency_matrix

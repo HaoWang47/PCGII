@@ -1,6 +1,6 @@
 #' Generate scale-free network skeleton and simulates corresponding precision matrix
 #'
-#' A utility function generates scale-free network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (−upper, −lower) union (lower, upper)
+#' A utility function generates scale-free network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (-upper, -lower) UNION (lower, upper).
 #'
 #' @importFrom igraph sample_pa
 #' @importFrom igraph as_adjacency_matrix

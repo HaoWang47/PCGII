@@ -1,7 +1,7 @@
 #' Utility function for PCGII inference results
 #'
 #' @description
-#' A utility function takes PCGII inference results as input and generates an adjacecy matrix corresponding to the significant partial correlations
+#' A utility function takes PCGII inference results as input and generates an adjacency matrix corresponding to the significant partial correlations
 #'
 #' @export sigs2mat
 #' @param sigs A dataframe of locations (row, col) of selected edges.

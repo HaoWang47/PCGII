@@ -30,7 +30,7 @@ make_sf_precision_mat(
 A precision matrix of size p by p.
 }
 \description{
-A utility function generates scale-free network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (−upper, −lower) union (lower, upper)
+A utility function generates scale-free network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (-upper, -lower) UNION (lower, upper).
 }
 \examples{
 omega = make_sf_precision_mat(e=1, p=10)

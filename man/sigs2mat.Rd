@@ -15,7 +15,7 @@ sigs2mat(sigs, P)
 A matrix of size P*(P-1)/2, with 0, 1.
 }
 \description{
-A utility function takes PCGII inference results as input and generates an adjacecy matrix corresponding to the significant partial correlations
+A utility function takes PCGII inference results as input and generates an adjacency matrix corresponding to the significant partial correlations
 }
 \examples{
 edges=cbind.data.frame(row=c(1,2,3,1,6,2,1,6,1,4),
