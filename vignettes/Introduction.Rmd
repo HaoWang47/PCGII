@@ -122,14 +122,14 @@ plot(PCGII_net,
      layout=layout.circle(PCGII_net)) 
 ```
 
-## PCGII Inference
+## CLEVEL Inference
 
 ```{r clevel}
 CLEVEL.out = clevel(df = Exp_data, lambda = fixed_lamdba)
 CLEVEL.inf = inference(CLEVEL.out, alpha = .1)
 ```
 
-## Display significant connections detected by PCGII
+## Display significant connections detected by CLEVEL
 
 ```{r CLEVEL_net, fig.align='center', fig.cap="Network Recovered by CLEVEL, circle-layout", fig.height=8, fig.width=8, out.width="80%"}
 CLEVEL_links = which(lower.tri(CLEVEL.inf) & CLEVEL.inf!=0, arr.ind = TRUE)
