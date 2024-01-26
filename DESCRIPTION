@@ -9,7 +9,8 @@ Description: This package is developed for estimating and testing partial
     detailed methodology, please see the paper.
 License: MIT + file LICENSE
 URL: https://haowang47.github.io/PCGII/
-Depends: R(>= 4.3.0),
+Depends: R(>= 4.3.0)
+Imports:    
     stats (>= 4.3.0),
     corpcor (>= 1.6.10),
     glmnet,

@@ -18,6 +18,7 @@ A matrix of size P*(P-1)/2, with 0, 1.
 A utility function takes PCGII inference results as input and generates an adjacecy matrix corresponding to the significant partial correlations
 }
 \examples{
-edges=cbind.data.frame(row=c(1,2,3,1,6,2,1,6,1,4), col=c(2,1,1,3,2,6,6,1,4,1)) # five edges
+edges=cbind.data.frame(row=c(1,2,3,1,6,2,1,6,1,4),
+                       col=c(2,1,1,3,2,6,6,1,4,1)) # five edges
 sigs2mat(sigs = edges, P = 6)
 }

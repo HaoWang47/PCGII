@@ -17,10 +17,16 @@ PCGII(df, prior, lambda)
 A list. The list contains estimated partial correlation matrix (Est), sparse partial correlation estimation matrix with threshold (EstThresh), estimated kappa (kappa), estimated test statistics matrix of partial correlations (tscore), sample size (n) and number of nodes (p).
 }
 \description{
-PCGII() is the function to apply the proposed method to get the estimated partial correlation graph with information incorporation
+PCGII() is the function to apply the proposed method to get the estimated partial correlation graph with information incorporation. Remark: mathematical standardization will be automatically done within the function.
 }
 \examples{
 library(PCGII)
+library(corpcor)
+library(glmnet)
+library(igraph)
+library(Matrix)
+library(mvtnorm)
+library(tidyverse)
 # Simulating data
 set.seed(1234567)
 n=50 # sample size
@@ -50,5 +56,4 @@ net \%>\%
         vertex.color="red",
         edge.arrow.size=0.5,
         layout=layout_in_circle(net))
-## Remark: mathematical standardization will be automatically done within the function.
 }

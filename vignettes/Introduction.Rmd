@@ -24,6 +24,12 @@ To start using PCGII, prepare your gene expression data and your prior knowledge
 ```{r setup}
 # devtools::install_github("HaoWang47/PCGII")
 library(PCGII)
+library(corpcor)
+library(glmnet)
+library(igraph)
+library(Matrix)
+library(mvtnorm)
+library(tidyverse)
 set.seed(010120000)
 ```
 

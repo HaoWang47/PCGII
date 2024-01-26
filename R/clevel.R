@@ -1,7 +1,7 @@
 #' Get the estimated partial correlation graph without information incorporation
 #'
 #' @description
-#' clevel() is the function to apply the method originally proposed in paper "Qiu, Y., & Zhou, X. H. (2020). Estimating c-level partial correlation graphs with application to brain imaging". It is used to get the estimated partial correlation graph without information incorporation.
+#' clevel() is the function to apply the method originally proposed in paper "Qiu, Y., & Zhou, X. H. (2020). Estimating c-level partial correlation graphs with application to brain imaging". It is used to get the estimated partial correlation graph without information incorporation. Remark: mathematical standardization will be automatically done within the function.
 #'
 #' @importFrom stats sd
 #' @importFrom glmnet glmnet
@@ -12,6 +12,12 @@
 #' @returns A list. The list contains estimated partial correlation matrix (Est), sparse partial correlation estimation matrix with threshold (EstThresh), estimated kappa (kappa), estimated test statistics matrix of partial correlations (tscore), sample size (n) and number of nodes (p).
 #' @examples
 #' library(PCGII)
+#' library(corpcor)
+#' library(glmnet)
+#' library(igraph)
+#' library(Matrix)
+#' library(mvtnorm)
+#' library(tidyverse)
 #' # Simulating data
 #' set.seed(1234567)
 #' n=50 # sample size
@@ -36,9 +42,7 @@
 #'         vertex.label.dist=0.5,
 #'         vertex.color="red",
 #'         edge.arrow.size=0.5,
-#'         layout=layout_in_circle(net)
-#'         )
-#' ## Remark: mathematical standardization will be automatically done within the function.
+#'         layout=layout_in_circle(net))
 clevel=function(df, lambda){
   n = dim(df)[1]; p = dim(df)[2]
   t0=2
