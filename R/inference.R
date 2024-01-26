@@ -1,3 +1,5 @@
+#' Conduct simultaneous inference of estimated partial correlations
+#'
 #' Inference() is the function to conduct simultaneous inference of estimated partial correlations.
 #'
 #' @export inference
@@ -8,6 +10,7 @@
 #' library(igraph)
 #' library(tidyverse)
 #' library(PCGII)
+#' library(mvtnorm)
 #' # Simulating data
 #' set.seed(1234567)
 #' n=50 # sample size

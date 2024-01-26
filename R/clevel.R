@@ -1,3 +1,5 @@
+#' Get the estimated partial correlation graph without information incorporation
+#'
 #' clevel() is the function to apply the method originally proposed in paper '> Qiu, Y., & Zhou, X. H. (2020). Estimating c-level partial correlation graphs with application to brain imaging. It is used to get the estimated partial correlation graph without information incorporation.
 #'
 #' @export clevel

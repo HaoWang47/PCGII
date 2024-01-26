@@ -15,9 +15,8 @@ Depends:
     igraph (>= 1.5.0.1),
     tidyverse (>= 2.0.0),
     Matrix (>= 1.6-4),
-    mvtnorm
-Imports:
-    PCGII
+    mvtnorm,
+    glmnet
 Suggests: 
     knitr,
     rmarkdown,

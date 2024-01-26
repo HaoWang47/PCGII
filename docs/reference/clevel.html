@@ -32,6 +32,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/Introduction.html">Introduction</a>
+    </li>
+    <li>
       <a href="../articles/vignette.html">vignette</a>
     </li>
   </ul></li>
@@ -88,7 +91,7 @@
 <span class="r-in"><span><span class="va">omega</span><span class="op">=</span><span class="fu"><a href="make_random_precision_mat.html">make_random_precision_mat</a></span><span class="op">(</span>eta<span class="op">=</span><span class="fl">.01</span>, p<span class="op">=</span><span class="va">p</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># population covariance matrix, which is used to generate data</span></span></span>
-<span class="r-in"><span><span class="va">Sigma</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/solve.html" class="external-link">solve</a></span><span class="op">(</span><span class="va">omega</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Sigma</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/solve-methods.html" class="external-link">solve</a></span><span class="op">(</span><span class="va">omega</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># simulate expression data</span></span></span>
 <span class="r-in"><span><span class="va">X</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html" class="external-link">rmvnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, sigma <span class="op">=</span> <span class="va">Sigma</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>

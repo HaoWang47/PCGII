@@ -1,3 +1,5 @@
+#' Utility function for PCGII inference results
+#'
 #' A utility function takes PCGII inference results as input and generates an adjacecy matrix corresponding to the significant partial correlations
 #'
 #' @export sigs2mat

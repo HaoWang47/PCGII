@@ -1,3 +1,5 @@
+#' Get the estimated partial correlation graph with information incorporation
+#'
 #' PCGII() is the function to apply the proposed method to get the estimated partial correlation graph with information incorporation
 #'
 #' @export PCGII

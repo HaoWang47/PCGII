@@ -16,7 +16,7 @@ A 2-column data.frame of pre-processed prior set, in which the connection betwee
 An utility function to pre-process the input prior set. This function will ensure the input prior set corresponds to an undirected prior network. If the prior network is believed to be directed, no pre-processing of the prior set is needed.
 }
 \examples{
-prior=as.data.frame(matrix(c(1,2,1,5,1,10), ncol=2, byrow=T)) ## a prior set of 3 connections (1-2, 1-3, 1-10)
+prior=as.data.frame(matrix(c(1,2,1,5,1,10), ncol=2, byrow=TRUE)) ## a prior set of 3 connections (1-2, 1-3, 1-10)
 colnames(prior)=c("row", "col")
 undirected=undirected_prior(prior)
 ## Remark: this function is not necessary. Prior set should be considered carefully before running the network analysis. If the prior network connections are believed to be undirected while the prior set only includes one way connections for simplicity, this function will duplicate the connections and swap the direction automactically.

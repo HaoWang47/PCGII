@@ -14,7 +14,9 @@ make_sf_precision_mat(
 )
 }
 \arguments{
-\item{e}{Numeric constant, the number of edges to add in each time step, see sample_pa {igraph}}
+\item{e}{Numeric constant, the number of edges to add in each time step, see sample_pa {igraph}.}
+
+\item{power}{Numeric constant, the power of the preferential attachment for scale-free network, the default is 1, , see sample_pa {igraph}.}
 
 \item{p}{A positive integer, the number of vertices.}
 

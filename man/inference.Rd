@@ -21,6 +21,7 @@ Inference() is the function to conduct simultaneous inference of estimated parti
 library(igraph)
 library(tidyverse)
 library(PCGII)
+library(mvtnorm)
 # Simulating data
 set.seed(1234567)
 n=50 # sample size

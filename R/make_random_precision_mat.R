@@ -1,3 +1,5 @@
+#' Generate unstructured/random network skeleton and simulates corresponding precision matrix
+#'
 #' A utility function generates unstructured/random network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (−upper, −lower) ∪ (lower, upper)
 #'
 #' @export make_random_precision_mat

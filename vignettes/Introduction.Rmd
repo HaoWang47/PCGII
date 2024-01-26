@@ -1,0 +1,36 @@
+---
+title: "Introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Intro 
+
+`PCGII` is an R package developed for Information-incorporated Gene Network Construction with FDR Control. PCGII stands for **P**artial **C**orrelation **G**raphs with **I**nformation **I**ncorporation.
+
+To start using PCGII, prepare your gene expression data and your prior knowledge about gene-gene direct associations in the target network. Two methods were implemented in the package, **PCGII** for the case when you have prior knowledge and **CLEVEL** for the case when you do not have prior knowledge. You can select one of two methods to construct the gene network. Incorporating false information could lead to an inflation of the empirical FDR. As a result, we strongly recommend incorporating only high-confidence information in real data applications. 
+
+```{r setup}
+devtools::install_github("HaoWang47/PCGII")
+library(PCGII)
+```
+
+# Prepare Data
+
+Three methods of generating a network structure were included in PCGII, including Scale Free Network Structure, Random Connection Network Structure, and Block Diagonal Network Structure. In this section, we will illustrate what are expected during data preparation. We will start with a network with 100 nodes.
+
+```{r data}
+set.seed(010120000)
+## Simulate precision matrix as your true network structure
+Omega = make_sf_precision_mat(e = 1, p = 100)
+```

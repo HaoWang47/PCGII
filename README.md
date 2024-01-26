@@ -1,4 +1,4 @@
-# PCGII [![](https://img.shields.io/badge/Release-v0.1.0-blue.svg)](https://github.com/haowang47/PCGII/commits/main) [![License: MIT v3](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/license/mit/)
+# PCGII [![](https://img.shields.io/badge/Release-v1.1.2-blue.svg)](https://github.com/haowang47/PCGII/commits/main) [![License: MIT v3](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/license/mit/)
 
 R Package for Information-incorporated Gene Network Construction with FDR Control
 
