@@ -28,7 +28,7 @@
     
     <a class="navbar-brand me-2" href="index.html">PCGII</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,37 +105,45 @@
 </h3>
 <p><code><a href="reference/PCGII.html">PCGII()</a></code>:</p>
 <ul>
-<li>
-<p>Input:</p>
+<li>Input:
 <ul>
-<li><p><code>df</code>: the main expression data, an <span class="math inline"><em>n</em></span> by <span class="math inline"><em>p</em></span> matrix/dataframe, in which each row corresponds to a sample and each column represents expression/abundance of an omics feature;</p></li>
-<li><p><code>prior</code>: the prior set, a <span class="math inline"><em>k</em></span> by <span class="math inline">2</span> dataframe, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief. Note, prior input has to be dataframe with column names <strong>“row”</strong> and <strong>“col”</strong>;</p></li>
-<li><p><code>lambda</code>: the regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of <span class="math inline">$\sqrt{2\times log(p/\sqrt{n})/n}$</span>.</p></li>
+<li>
+<code>df</code>: the main expression data, an <span class="math inline"><em>n</em></span> by <span class="math inline"><em>p</em></span> matrix/dataframe, in which each row corresponds to a sample and each column represents expression/abundance of an omics feature;</li>
+<li>
+<code>prior</code>: the prior set, a <span class="math inline"><em>k</em></span> by <span class="math inline">2</span> dataframe, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief. Note, prior input has to be dataframe with column names <strong>“row”</strong> and <strong>“col”</strong>;</li>
+<li>
+<code>lambda</code>: the regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of <span class="math inline">$\sqrt{2\times log(p/\sqrt{n})/n}$</span>.</li>
 </ul>
 </li>
-<li><p>Remark: mathematical standardization will be automatically done within the function.</p></li>
-<li>
-<p>Output: This function returns a list of</p>
+<li>Remark: mathematical standardization will be automatically done within the function.</li>
+<li>Output: This function returns a list of
 <ul>
-<li><p><code>Est</code>: estimated partial correlation matrix;</p></li>
-<li><p><code>EstThresh</code>: sparse partial correlation estimation matrix with threshold;</p></li>
-<li><p><code>kappa</code>: estimated ratio of forth and squared second moment of residuals, please refer to the manuscript for details;</p></li>
-<li><p><code>tscore</code>: estimated test statistics matrix of partial correlations;</p></li>
-<li><p><code>n</code>: sample size;</p></li>
-<li><p><code>p</code>: number of genes under study.</p></li>
+<li>
+<code>Est</code>: estimated partial correlation matrix;</li>
+<li>
+<code>EstThresh</code>: sparse partial correlation estimation matrix with threshold;</li>
+<li>
+<code>kappa</code>: estimated ratio of forth and squared second moment of residuals, please refer to the manuscript for details;</li>
+<li>
+<code>tscore</code>: estimated test statistics matrix of partial correlations;</li>
+<li>
+<code>n</code>: sample size;</li>
+<li>
+<code>p</code>: number of genes under study.</li>
 </ul>
 </li>
 </ul>
 <p><code>Inference()</code>:</p>
 <ul>
-<li>
-<p>Input:</p>
+<li>Input:
 <ul>
-<li><p><code>list</code>: a list returned by either <code><a href="reference/PCGII.html">PCGII()</a></code> or <code><a href="reference/clevel.html">clevel()</a></code>.</p></li>
-<li><p><code>alpha</code>: pre-determined False Discovery Rate. Nominal FDR is set at 0.05 by default.</p></li>
+<li>
+<code>list</code>: a list returned by either <code><a href="reference/PCGII.html">PCGII()</a></code> or <code><a href="reference/clevel.html">clevel()</a></code>.</li>
+<li>
+<code>alpha</code>: pre-determined False Discovery Rate. Nominal FDR is set at 0.05 by default.</li>
 </ul>
 </li>
-<li><p>Output: an adjacency matrix of significant partial correlations.</p></li>
+<li>Output: an adjacency matrix of significant partial correlations.</li>
 </ul>
 <hr>
 </div>
@@ -197,7 +205,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Hao Wang <br><small class="roles"> Maintainer </small>  </li>
+<li>
+<a href="https://haowang47.github.io/" class="external-link">Hao Wang</a> <br><small class="roles"> Maintainer </small>  </li>
 </ul>
 </div>
 
@@ -209,7 +218,7 @@
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Hao Wang.</p>
+<p>Crafted by <a href="https://haowang47.github.io/" class="external-link">Hao Wang</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
