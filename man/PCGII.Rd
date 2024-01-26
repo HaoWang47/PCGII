@@ -2,7 +2,7 @@
 % Please edit documentation in R/PCGII.R
 \name{PCGII}
 \alias{PCGII}
-\title{PCGII() is the function to apply the proposed method to get the estimated partial correlation graph with information incorporation}
+\title{Get the estimated partial correlation graph with information incorporation}
 \usage{
 PCGII(df, prior, lambda)
 }

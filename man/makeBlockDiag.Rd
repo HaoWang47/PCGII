@@ -2,7 +2,7 @@
 % Please edit documentation in R/makeBlockDiag.R
 \name{makeBlockDiag}
 \alias{makeBlockDiag}
-\title{A utility function generates block-diagonal matrix of size p by p with blocks B1, B2, ..., Bk. Each block matrix is of size blocksize by blocksize. The off-diagonal elements in block matrix are generated from uniform (min.beta, max.beta). The diagonal elements in block matrix are generated from uniform (1, 1.25).}
+\title{Generate block-diagonal matrix of size p by p}
 \usage{
 makeBlockDiag(blocksize = 4, p = 20, min.beta = 0.3, max.beta = 0.9)
 }

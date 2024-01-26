@@ -2,7 +2,7 @@
 % Please edit documentation in R/undirected_prior.R
 \name{undirected_prior}
 \alias{undirected_prior}
-\title{An utility function to pre-process the input prior set. This function will ensure the input prior set corresponds to an undirected prior network. If the prior network is believed to be directed, no pre-processing of the prior set is needed.}
+\title{Pre-process the input prior set to ensure the input prior set corresponds to an undirected prior network}
 \usage{
 undirected_prior(prior)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/sigs2mat.R
 \name{sigs2mat}
 \alias{sigs2mat}
-\title{A utility function takes PCGII inference results as input and generates an adjacecy matrix corresponding to the significant partial correlations}
+\title{Utility function for PCGII inference results}
 \usage{
 sigs2mat(sigs, P)
 }

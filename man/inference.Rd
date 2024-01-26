@@ -2,7 +2,7 @@
 % Please edit documentation in R/inference.R
 \name{inference}
 \alias{inference}
-\title{Inference() is the function to conduct simultaneous inference of estimated partial correlations.}
+\title{Conduct simultaneous inference of estimated partial correlations}
 \usage{
 inference(list, alpha = 0.05)
 }

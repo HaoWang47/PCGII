@@ -2,7 +2,7 @@
 % Please edit documentation in R/make_random_precision_mat.R
 \name{make_random_precision_mat}
 \alias{make_random_precision_mat}
-\title{A utility function generates unstructured/random network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (−upper, −lower) ∪ (lower, upper)}
+\title{Generate unstructured/random network skeleton and simulates corresponding precision matrix}
 \usage{
 make_random_precision_mat(
   eta = 0.01,
