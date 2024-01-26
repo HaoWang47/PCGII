@@ -15,13 +15,10 @@ clevel(df, lambda)
 A list. The list contains estimated partial correlation matrix (Est), sparse partial correlation estimation matrix with threshold (EstThresh), estimated kappa (kappa), estimated test statistics matrix of partial correlations (tscore), sample size (n) and number of nodes (p).
 }
 \description{
-clevel() is the function to apply the method originally proposed in paper '> Qiu, Y., & Zhou, X. H. (2020). Estimating c-level partial correlation graphs with application to brain imaging. It is used to get the estimated partial correlation graph without information incorporation.
+clevel() is the function to apply the method originally proposed in paper "Qiu, Y., & Zhou, X. H. (2020). Estimating c-level partial correlation graphs with application to brain imaging". It is used to get the estimated partial correlation graph without information incorporation.
 }
 \examples{
-library(igraph)
-library(tidyverse)
 library(PCGII)
-library(mvtnorm)
 # Simulating data
 set.seed(1234567)
 n=50 # sample size
@@ -39,7 +36,14 @@ lam=2*sqrt(log(p)/n) ## fixed lambda
 CLEVEL_out=clevel(df=X, lambda = lam)
 inference_out=inference(list=CLEVEL_out)
 diag(inference_out)=0
-net=inference_out \%>\% graph_from_adjacency_matrix(mode = "undirected")
-net \%>\% plot(vertex.size=4, vertex.label.dist=0.5, vertex.color="red", edge.arrow.size=0.5, layout=layout_in_circle(net))
+net=inference_out \%>\%
+   graph_from_adjacency_matrix(mode = "undirected")
+net \%>\%
+   plot(vertex.size=4,
+        vertex.label.dist=0.5,
+        vertex.color="red",
+        edge.arrow.size=0.5,
+        layout=layout_in_circle(net)
+        )
 ## Remark: mathematical standardization will be automatically done within the function.
 }

@@ -1,7 +1,11 @@
 #' Generate unstructured/random network skeleton and simulates corresponding precision matrix
 #'
-#' A utility function generates unstructured/random network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (−upper, −lower) ∪ (lower, upper)
+#' @description
+#' A utility function generates unstructured/random network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (−upper, −lower) union (lower, upper)
 #'
+#' @importFrom igraph sample_gnp
+#' @importFrom igraph as_adjacency_matrix
+#' @importFrom stats runif
 #' @export make_random_precision_mat
 #' @param eta A number between 0 and 1, the probability for drawing an edge between two arbitrary vertices, i.e. the sparsity of the network.
 #' @param p A positive integer, the number of vertices.
@@ -12,7 +16,6 @@
 #' @examples
 #' omega = make_random_precision_mat(eta=.2, p=10)
 make_random_precision_mat=function(eta=.01, p=20, lower=.2, upper=.5, diag=0.1){
-  require(igraph)
   g <- sample_gnp(n=p, p=eta, directed = FALSE)
   omega=as.matrix(as_adjacency_matrix(g))
   for(h1 in 1:(p-1)){

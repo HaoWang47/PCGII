@@ -14,9 +14,9 @@ make_sf_precision_mat(
 )
 }
 \arguments{
-\item{e}{Numeric constant, the number of edges to add in each time step, see sample_pa {igraph}.}
+\item{e}{Numeric constant, the number of edges to add in each time step, see sample_pa().}
 
-\item{power}{Numeric constant, the power of the preferential attachment for scale-free network, the default is 1, , see sample_pa {igraph}.}
+\item{power}{Numeric constant, the power of the preferential attachment for scale-free network, the default is 1, , see sample_pa().}
 
 \item{p}{A positive integer, the number of vertices.}
 
@@ -30,7 +30,7 @@ make_sf_precision_mat(
 A precision matrix of size p by p.
 }
 \description{
-A utility function generates scale-free network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (−upper, −lower) ∪ (lower, upper)
+A utility function generates scale-free network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (−upper, −lower) union (lower, upper)
 }
 \examples{
 omega = make_sf_precision_mat(e=1, p=10)

@@ -1,7 +1,9 @@
 #' Pre-process the input prior set to ensure the input prior set corresponds to an undirected prior network
 #'
+#' @description
 #' An utility function to pre-process the input prior set. This function will ensure the input prior set corresponds to an undirected prior network. If the prior network is believed to be directed, no pre-processing of the prior set is needed.
 #'
+#' @importFrom dplyr arrange
 #' @export undirected_prior
 #' @param prior A k by 2 data.frame of prior set, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief
 #' @returns A 2-column data.frame of pre-processed prior set, in which the connection between any pair of nodes is undirected.
@@ -11,7 +13,5 @@
 #' undirected=undirected_prior(prior)
 #' ## Remark: this function is not necessary. Prior set should be considered carefully before running the network analysis. If the prior network connections are believed to be undirected while the prior set only includes one way connections for simplicity, this function will duplicate the connections and swap the direction automactically.
 undirected_prior = function(prior){
-  require(tidyverse)
-  rbind.data.frame(prior, prior %>% transform(row = pmax(row, col), col = pmin(row, col))) %>%
-    arrange(row, col) %>% unique()
+  unique(arrange(rbind(prior, transform(prior, row = pmax(row, col), col = pmin(row, col))), row, col))
 }

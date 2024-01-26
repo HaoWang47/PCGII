@@ -1,10 +1,13 @@
 #' Generate scale-free network skeleton and simulates corresponding precision matrix
 #'
-#' A utility function generates scale-free network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (−upper, −lower) ∪ (lower, upper)
+#' A utility function generates scale-free network skeleton and simulates corresponding precision matrix. The non-zero elements of the precision matrix are generated randomly from a uniform distribution with parameters (−upper, −lower) union (lower, upper)
 #'
+#' @importFrom igraph sample_pa
+#' @importFrom igraph as_adjacency_matrix
+#' @importFrom stats runif
 #' @export make_sf_precision_mat
-#' @param e Numeric constant, the number of edges to add in each time step, see sample_pa {igraph}.
-#' @param power Numeric constant, the power of the preferential attachment for scale-free network, the default is 1, , see sample_pa {igraph}.
+#' @param e Numeric constant, the number of edges to add in each time step, see sample_pa().
+#' @param power Numeric constant, the power of the preferential attachment for scale-free network, the default is 1, , see sample_pa().
 #' @param p A positive integer, the number of vertices.
 #' @param lower A positive number, lower limits of the uniform distribution.
 #' @param upper A positive number, upper limits of the uniform distribution.
@@ -13,7 +16,6 @@
 #' @examples
 #' omega = make_sf_precision_mat(e=1, p=10)
 make_sf_precision_mat=function(e=1, power=1, p=20, lower=.2, upper=.5, diag=0.1){
-  require(igraph)
   g <- sample_pa(n=p, power=power, m=e, directed = FALSE)
   omega=as.matrix(as_adjacency_matrix(g))
   for(h1 in 1:(p-1)){

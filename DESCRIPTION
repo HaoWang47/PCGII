@@ -1,26 +1,30 @@
-Package: PCGII
 Type: Package
+Package: PCGII
 Title: Partial Correlation Graph with Information Incorporation
 Version: 1.1.2
 Author: Hao Wang, Yumou Qiu, Peng Liu
 Maintainer: Hao Wang <haydo.wang@outlook.com>
-Description: This package is developed for estimating and testing partial correlation graphs with prior information incorporated.
-    For the detailed methodology, please see the paper.
+Description: This package is developed for estimating and testing partial
+    correlation graphs with prior information incorporated.  For the
+    detailed methodology, please see the paper.
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.2.3
-Depends:
+URL: https://haowang47.github.io/PCGII/
+Depends: R(>= 4.3.0),
+    stats (>= 4.3.0),
     corpcor (>= 1.6.10),
+    glmnet,
     igraph (>= 1.5.0.1),
-    tidyverse (>= 2.0.0),
     Matrix (>= 1.6-4),
     mvtnorm,
-    glmnet
+    dplyr (>= 1.1.4),
+    tidyverse (>= 2.0.0)
 Suggests: 
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
-VignetteBuilder: knitr
+VignetteBuilder: 
+    knitr
 Config/testthat/edition: 3
-URL: https://haowang47.github.io/PCGII/
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3

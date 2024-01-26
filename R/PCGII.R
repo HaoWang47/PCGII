@@ -1,17 +1,18 @@
 #' Get the estimated partial correlation graph with information incorporation
 #'
+#' @description
 #' PCGII() is the function to apply the proposed method to get the estimated partial correlation graph with information incorporation
 #'
 #' @export PCGII
+#' @importFrom stats sd
+#' @importFrom glmnet glmnet
+#' @importFrom stats predict
 #' @param df The main expression dataset, an n by p matrix, in which each row corresponds to a sample and each column represents expression/abundance of an omics feature.
 #' @param prior The prior set, a k by 2 dataframe, in which each row corresponds to a pair of nodes (any omics features) that are connected under prior belief. Note, prior input has to be dataframe.
 #' @param lambda The regularization parameter, used in the node-wise regression. If missing, default lambda will be used which is at the order of sqrt(2*log(p)/n).
 #' @returns A list. The list contains estimated partial correlation matrix (Est), sparse partial correlation estimation matrix with threshold (EstThresh), estimated kappa (kappa), estimated test statistics matrix of partial correlations (tscore), sample size (n) and number of nodes (p).
 #' @examples
-#' library(igraph)
-#' library(tidyverse)
 #' library(PCGII)
-#' library(mvtnorm)
 #' # Simulating data
 #' set.seed(1234567)
 #' n=50 # sample size
@@ -33,11 +34,16 @@
 #' PCGII_out=PCGII(df=X, prior=prior_set, lambda = lam)
 #' inference_out=inference(list=PCGII_out)
 #' diag(inference_out)=0
-#' net=inference_out %>% graph_from_adjacency_matrix(mode = "undirected")
-#' net %>% plot(vertex.size=4, vertex.label.dist=0.5, vertex.color="red", edge.arrow.size=0.5, layout=layout_in_circle(net))
+#' net=inference_out %>%
+#'    graph_from_adjacency_matrix(mode = "undirected")
+#' net %>%
+#'    plot(vertex.size=4,
+#'         vertex.label.dist=0.5,
+#'         vertex.color="red",
+#'         edge.arrow.size=0.5,
+#'         layout=layout_in_circle(net))
 #' ## Remark: mathematical standardization will be automatically done within the function.
 PCGII=function(df, prior, lambda){
-  require(glmnet)
   n = dim(df)[1]; p = dim(df)[2]
   t0=2
   IndMatrix = matrix(1, p, p) - diag(rep(1, p))
