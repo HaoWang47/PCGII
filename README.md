@@ -10,7 +10,6 @@ R Package for Information-incorporated Gene Network Construction with FDR Contro
 
 ### Citation:
 > Wang, H., Qiu, Y.\*, Guo, H., Yin, Y., Liu, P.\*, 2024. Information-incorporated Gene Network Construction with FDR Control. Under review.
------
 
 # Installation and Package loading
 ```r
@@ -24,14 +23,13 @@ R Package for Information-incorporated Gene Network Construction with FDR Contro
 # install "devtools" package in your R environment
 > # devtools::install_github("HaoWang47/PCGII")
 > library(PCGII)
-
 ```
 
 This is a tutorial script for researchers who are interested in applying PCGII on omics data to learn the direct association structure of omics features. The main function `PGCII()` takes a biologically pre-processed expression data matrix as input, and returns a list of statistics (estimates and test statistics). The function `inference()` takes a list returned by `PGCII()` as input and conduct simultaneous test to identify significant partial correlations with False Discovery Rate (FDR) controlled at a pre-determined nominal level (0.05 by default).
 
 ### Usage
 
-```PCGII()```:
+`PCGII()`
 
   - Input:
     - `df`: the main expression data, an $n$ by $p$ matrix/dataframe, in which each row corresponds to a sample and each column represents expression/abundance of an omics feature;
@@ -46,14 +44,12 @@ This is a tutorial script for researchers who are interested in applying PCGII o
     - `n`: sample size;
     - `p`: number of genes under study.
 
-```Inference()```:
+`Inference()`
 
   - Input:
     - `list`: a list returned by either `PCGII()` or `clevel()`.
     - `alpha`: pre-determined False Discovery Rate. Nominal FDR is set at 0.05 by default.
   - Output: an adjacency matrix of significant partial correlations.
-
------
 
 # Network Analysis
 
