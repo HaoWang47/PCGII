@@ -3,6 +3,10 @@ Package: PCGII
 Title: Partial Correlation Graph with Information Incorporation
 Version: 1.1.2
 Authors@R: c(person("Hao", "Wang", email = "haydo.wang@outlook.com", role = c("aut", "cre")), person("Yumou", "Qiu", role = "aut"), person("Peng", "Liu", role = "aut"))
+Author: Hao Wang [aut, cre],
+  Yumou Qiu [aut],
+  Peng Liu [aut]
+Maintainer: Hao Wang <haydo.wang@outlook.com>
 Description: Large-scale gene expression studies allow gene network construction to uncover associations among genes. This package is developed for estimating and testing partial correlation graphs with prior information incorporated. 
 License: MIT + file LICENSE
 URL: https://haowang47.github.io/PCGII/
