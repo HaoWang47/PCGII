@@ -90,34 +90,15 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     union</span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://Matrix.R-forge.R-project.org" class="external-link">Matrix</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://mvtnorm.R-forge.R-project.org" class="external-link">mvtnorm</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Attaching core tidyverse packages</span> ──────────────────────── tidyverse 2.0.0 ──</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">dplyr    </span> 1.1.4     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">readr    </span> 2.1.5</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">forcats  </span> 1.0.0     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">stringr  </span> 1.5.1</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">ggplot2  </span> 3.4.4     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tibble   </span> 3.2.1</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">lubridate</span> 1.9.3     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tidyr    </span> 1.3.1</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">purrr    </span> 1.0.2     </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">lubridate</span>::<span style="color: #00BB00;">%--%()</span>      masks <span style="color: #0000BB;">igraph</span>::%--%()</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">as_data_frame()</span> masks <span style="color: #0000BB;">tibble</span>::as_data_frame(), <span style="color: #0000BB;">igraph</span>::as_data_frame()</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">purrr</span>::<span style="color: #00BB00;">compose()</span>       masks <span style="color: #0000BB;">igraph</span>::compose()</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">tidyr</span>::<span style="color: #00BB00;">crossing()</span>      masks <span style="color: #0000BB;">igraph</span>::crossing()</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">tidyr</span>::<span style="color: #00BB00;">expand()</span>        masks <span style="color: #0000BB;">Matrix</span>::expand()</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">filter()</span>        masks <span style="color: #0000BB;">stats</span>::filter()</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>           masks <span style="color: #0000BB;">stats</span>::lag()</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">tidyr</span>::<span style="color: #00BB00;">pack()</span>          masks <span style="color: #0000BB;">Matrix</span>::pack()</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">purrr</span>::<span style="color: #00BB00;">simplify()</span>      masks <span style="color: #0000BB;">igraph</span>::simplify()</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">tidyr</span>::<span style="color: #00BB00;">unpack()</span>        masks <span style="color: #0000BB;">Matrix</span>::unpack()</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Use the conflicted package (<span style="color: #0000BB; font-style: italic;">&lt;http://conflicted.r-lib.org/&gt;</span>) to force all conflicts to become errors</span>
 <span class="r-in"><span><span class="co"># Simulating data</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234567</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">n</span><span class="op">=</span><span class="fl">50</span> <span class="co"># sample size</span></span></span>
 <span class="r-in"><span><span class="va">p</span><span class="op">=</span><span class="fl">30</span> <span class="co"># number of nodes</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">omega</span><span class="op">=</span><span class="fu"><a href="make_random_precision_mat.html">make_random_precision_mat</a></span><span class="op">(</span>eta<span class="op">=</span><span class="fl">.01</span>, p<span class="op">=</span><span class="va">p</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Omega</span><span class="op">=</span><span class="fu"><a href="make_random_precision_mat.html">make_random_precision_mat</a></span><span class="op">(</span>eta<span class="op">=</span><span class="fl">.01</span>, p<span class="op">=</span><span class="va">p</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># population covariance matrix, which is used to generate data</span></span></span>
-<span class="r-in"><span><span class="va">Sigma</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/solve-methods.html" class="external-link">solve</a></span><span class="op">(</span><span class="va">omega</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Sigma</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/solve-methods.html" class="external-link">solve</a></span><span class="op">(</span><span class="va">Omega</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># simulate expression data</span></span></span>
 <span class="r-in"><span><span class="va">X</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html" class="external-link">rmvnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, sigma <span class="op">=</span> <span class="va">Sigma</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -130,10 +111,8 @@
 <span class="r-in"><span><span class="va">PCGII_out</span><span class="op">=</span><span class="fu">PCGII</span><span class="op">(</span>df<span class="op">=</span><span class="va">X</span>, prior<span class="op">=</span><span class="va">prior_set</span>, lambda <span class="op">=</span> <span class="va">lam</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">inference_out</span><span class="op">=</span><span class="fu"><a href="inference.html">inference</a></span><span class="op">(</span>list<span class="op">=</span><span class="va">PCGII_out</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="va">inference_out</span><span class="op">)</span><span class="op">=</span><span class="fl">0</span></span></span>
-<span class="r-in"><span><span class="va">net</span><span class="op">=</span><span class="va">inference_out</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span>   <span class="fu"><a href="https://r.igraph.org/reference/graph_from_adjacency_matrix.html" class="external-link">graph_from_adjacency_matrix</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"undirected"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">net</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>vertex.size<span class="op">=</span><span class="fl">4</span>,</span></span>
+<span class="r-in"><span><span class="va">net</span><span class="op">=</span><span class="fu"><a href="https://r.igraph.org/reference/graph_from_adjacency_matrix.html" class="external-link">graph_from_adjacency_matrix</a></span><span class="op">(</span><span class="va">inference_out</span>, mode <span class="op">=</span> <span class="st">"undirected"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">net</span>, vertex.size<span class="op">=</span><span class="fl">4</span>,</span></span>
 <span class="r-in"><span>        vertex.label.dist<span class="op">=</span><span class="fl">0.5</span>,</span></span>
 <span class="r-in"><span>        vertex.color<span class="op">=</span><span class="st">"red"</span>,</span></span>
 <span class="r-in"><span>        edge.arrow.size<span class="op">=</span><span class="fl">0.5</span>,</span></span>
@@ -146,7 +125,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Crafted by <a href="https://haowang47.github.io/" class="external-link">Hao Wang</a>.</p>
+  <p></p><p>Crafted by <a href="https://haowang47.github.io/" class="external-link">Hao Wang</a>, Yumou Qiu, Peng Liu.</p>
 </div>
 
 <div class="pkgdown-footer-right">

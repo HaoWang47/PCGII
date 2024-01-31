@@ -76,16 +76,15 @@
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r.igraph.org/" class="external-link">igraph</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://Matrix.R-forge.R-project.org" class="external-link">Matrix</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://mvtnorm.R-forge.R-project.org" class="external-link">mvtnorm</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Simulating data</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234567</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">n</span><span class="op">=</span><span class="fl">50</span> <span class="co"># sample size</span></span></span>
 <span class="r-in"><span><span class="va">p</span><span class="op">=</span><span class="fl">30</span> <span class="co"># number of nodes</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">omega</span><span class="op">=</span><span class="fu"><a href="make_random_precision_mat.html">make_random_precision_mat</a></span><span class="op">(</span>eta<span class="op">=</span><span class="fl">.01</span>, p<span class="op">=</span><span class="va">p</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Omega</span><span class="op">=</span><span class="fu"><a href="make_random_precision_mat.html">make_random_precision_mat</a></span><span class="op">(</span>eta<span class="op">=</span><span class="fl">.01</span>, p<span class="op">=</span><span class="va">p</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># population covariance matrix, which is used to generate data</span></span></span>
-<span class="r-in"><span><span class="va">Sigma</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/solve-methods.html" class="external-link">solve</a></span><span class="op">(</span><span class="va">omega</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Sigma</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/solve-methods.html" class="external-link">solve</a></span><span class="op">(</span><span class="va">Omega</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># simulate expression data</span></span></span>
 <span class="r-in"><span><span class="va">X</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html" class="external-link">rmvnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, sigma <span class="op">=</span> <span class="va">Sigma</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -94,10 +93,9 @@
 <span class="r-in"><span><span class="va">CLEVEL_out</span><span class="op">=</span><span class="fu">clevel</span><span class="op">(</span>df<span class="op">=</span><span class="va">X</span>, lambda <span class="op">=</span> <span class="va">lam</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">inference_out</span><span class="op">=</span><span class="fu"><a href="inference.html">inference</a></span><span class="op">(</span>list<span class="op">=</span><span class="va">CLEVEL_out</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="va">inference_out</span><span class="op">)</span><span class="op">=</span><span class="fl">0</span></span></span>
-<span class="r-in"><span><span class="va">net</span><span class="op">=</span><span class="va">inference_out</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span>   <span class="fu"><a href="https://r.igraph.org/reference/graph_from_adjacency_matrix.html" class="external-link">graph_from_adjacency_matrix</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"undirected"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">net</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>vertex.size<span class="op">=</span><span class="fl">4</span>,</span></span>
+<span class="r-in"><span><span class="va">net</span><span class="op">=</span><span class="fu"><a href="https://r.igraph.org/reference/graph_from_adjacency_matrix.html" class="external-link">graph_from_adjacency_matrix</a></span><span class="op">(</span><span class="va">inference_out</span>, mode <span class="op">=</span> <span class="st">"undirected"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">net</span>,</span></span>
+<span class="r-in"><span>        vertex.size<span class="op">=</span><span class="fl">4</span>,</span></span>
 <span class="r-in"><span>        vertex.label.dist<span class="op">=</span><span class="fl">0.5</span>,</span></span>
 <span class="r-in"><span>        vertex.color<span class="op">=</span><span class="st">"red"</span>,</span></span>
 <span class="r-in"><span>        edge.arrow.size<span class="op">=</span><span class="fl">0.5</span>,</span></span>
@@ -110,7 +108,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Crafted by <a href="https://haowang47.github.io/" class="external-link">Hao Wang</a>.</p>
+  <p></p><p>Crafted by <a href="https://haowang47.github.io/" class="external-link">Hao Wang</a>, Yumou Qiu, Peng Liu.</p>
 </div>
 
 <div class="pkgdown-footer-right">
