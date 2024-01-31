@@ -10,7 +10,6 @@
 #' @returns An adjacency matrix of significant partial correlations.
 #' @examples
 #' library(igraph)
-#' library(tidyverse)
 #' library(PCGII)
 #' library(mvtnorm)
 #' # Simulating data
@@ -18,10 +17,10 @@
 #' n=50 # sample size
 #' p=30 # number of nodes
 #'
-#' omega=make_random_precision_mat(eta=.01, p=p)
+#' Omega=make_random_precision_mat(eta=.01, p=p)
 #'
 #' # population covariance matrix, which is used to generate data
-#' Sigma=solve(omega)
+#' Sigma=solve(Omega)
 #' # simulate expression data
 #' X = rmvnorm(n = n, sigma = Sigma)
 #'
@@ -34,10 +33,8 @@
 #' PCGII_out=PCGII(df=X, prior=prior_set, lambda = lam)
 #' inference_out=inference(list=PCGII_out)
 #' diag(inference_out)=0
-#' net=inference_out %>%
-#'    graph_from_adjacency_matrix(mode = "undirected")
-#' net %>%
-#'    plot(vertex.size=4,
+#' net=graph_from_adjacency_matrix(inference_out, mode = "undirected")
+#'    plot(net, vertex.size=4,
 #'         vertex.label.dist=0.5,
 #'         vertex.color="red",
 #'         edge.arrow.size=0.5,

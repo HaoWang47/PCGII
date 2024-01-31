@@ -14,7 +14,7 @@
 #' @param diag A small positive number to be added to diagonal elements, which guarantees the precision matrix is positive definite.
 #' @returns A precision matrix of size p by p.
 #' @examples
-#' omega = make_sf_precision_mat(e=1, p=10)
+#' Omega = make_sf_precision_mat(e=1, p=10)
 make_sf_precision_mat=function(e=1, power=1, p=20, lower=.2, upper=.5, diag=0.1){
   g <- sample_pa(n=p, power=power, m=e, directed = FALSE)
   omega=as.matrix(as_adjacency_matrix(g))
