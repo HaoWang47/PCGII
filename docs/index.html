@@ -86,22 +86,30 @@
 <div class="section level1">
 <h1 id="installation-and-package-loading">Installation and Package loading<a class="anchor" aria-label="anchor" href="#installation-and-package-loading"></a>
 </h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># R version is required &gt;= 3.4.4</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co"># When the first time to use the package, please make sure dependent packages are installed under your R environment, if not, please use commands below to install</span></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co">#install.packages("tidyverse")</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="er">&gt;</span> <span class="co">#install.packages("glmnet")</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="er">&gt;</span> <span class="co">#install.packages("mvtnorm")</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="er">&gt;</span> <span class="co">#install.packages("igraph")</span></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="er">&gt;</span> <span class="co">#install.packages("Matrix")</span></span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co"># install "devtools" package in your R environment</span></span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># devtools::install_github("HaoWang47/PCGII")</span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(PCGII)</span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(corpcor)</span>
-<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(glmnet)</span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(igraph)</span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(Matrix)</span>
-<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(mvtnorm)</span>
-<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># R version is required &gt;= 3.4.4</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># When the first time to use the package, please make sure dependent packages are installed under your R environment, if not, please use commands below to install</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># install.packages("tidyverse")</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># install.packages("glmnet")</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># install.packages("mvtnorm")</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># install.packages("igraph")</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># install.packages("Matrix")</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Two ways to install PCGII</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="er">&gt;</span> <span class="co">#</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="er">&gt;</span> <span class="co">#</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Option 1</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># install.packages("PCGII")</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Option 2</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># install "devtools" package in your R environment</span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># devtools::install_github("HaoWang47/PCGII")</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="er">&gt;</span> <span class="co">#</span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="er">&gt;</span> <span class="co">#</span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(PCGII)</span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(corpcor)</span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(glmnet)</span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(igraph)</span>
+<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(Matrix)</span>
+<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(mvtnorm)</span>
+<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>This is a tutorial script for researchers who are interested in applying PCGII on omics data to learn the direct association structure of omics features. The main function <code>PGCII()</code> takes a biologically pre-processed expression data matrix as input, and returns a list of statistics (estimates and test statistics). The function <code><a href="reference/inference.html">inference()</a></code> takes a list returned by <code>PGCII()</code> as input and conduct simultaneous test to identify significant partial correlations with False Discovery Rate (FDR) controlled at a pre-determined nominal level (0.05 by default).</p>
 <div class="section level3">
 <h3 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
@@ -188,7 +196,14 @@
 +   plot(vertex.size=4, vertex.label.dist=0.5, vertex.color="red", edge.arrow.size=0.5)</code></pre>
 </div>
 
-  </main><aside class="col-md-3"><div class="license">
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=PCGII" class="external-link">View on CRAN</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>

@@ -13,15 +13,23 @@ R Package for Information-incorporated Gene Network Construction with FDR Contro
 
 # Installation and Package loading
 ```r
-# R version is required >= 3.4.4
-# When the first time to use the package, please make sure dependent packages are installed under your R environment, if not, please use commands below to install
-> #install.packages("tidyverse")
-> #install.packages("glmnet")
-> #install.packages("mvtnorm")
-> #install.packages("igraph")
-> #install.packages("Matrix")
-# install "devtools" package in your R environment
+> # R version is required >= 3.4.4
+> # When the first time to use the package, please make sure dependent packages are installed under your R environment, if not, please use commands below to install
+> # install.packages("tidyverse")
+> # install.packages("glmnet")
+> # install.packages("mvtnorm")
+> # install.packages("igraph")
+> # install.packages("Matrix")
+> # Two ways to install PCGII
+> #
+> #
+> # Option 1
+> # install.packages("PCGII")
+> # Option 2
+> # install "devtools" package in your R environment
 > # devtools::install_github("HaoWang47/PCGII")
+> #
+> #
 > library(PCGII)
 > library(corpcor)
 > library(glmnet)
